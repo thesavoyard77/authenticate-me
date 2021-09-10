@@ -38,7 +38,7 @@ if (!isProduction) {
   app.use(routes);
 
   app.use((req, res, next) => {
-    const err = newError("The requested resource could not be found.");
+    const err = new Error("The requested resource could not be found.");
     err.title = "Resource not found";
     err.errors = ["The requested resource could not be found."];
     err.status = 404;
@@ -55,7 +55,7 @@ if (!isProduction) {
    next(err);
  });
 
- app.use((err, _req, _res, _next) => {
+ app.use((err, _req, res, _next) => {
    res.status(err.status || 500);
    console.error(err);
    res.json({
