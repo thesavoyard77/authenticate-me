@@ -7,6 +7,6 @@ const apiRouter = require('./api');
 //   res.send('Hello World!');
 // });
 
-router.use('/api', apiRouter)
+router.use('/api', apiRouter);
 
 module.exports = router;
