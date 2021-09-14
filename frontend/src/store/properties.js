@@ -5,7 +5,7 @@ const SET_PROPERTIES = 'properties/setProperties'
 const setProperties = (properties) => ({
     type: SET_PROPERTIES,
     properties,
-})
+});
 //define thunks
 export const getProperties = () => async (dispatch) => {
   const res = await fetch('/api/properties', )

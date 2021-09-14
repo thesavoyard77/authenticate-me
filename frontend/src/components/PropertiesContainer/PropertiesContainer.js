@@ -2,7 +2,6 @@
 // import hooks from 'react-redux'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import property from '../../../../backend/db/models/property';
 //import thunk creator
 import { getProperties } from '../../store/properties';
 import  "./PropertiesContainer.css"
@@ -31,7 +30,14 @@ return (
                 </tr>
             </thead>
             <tbody className={'tbody'}>
-            {propertiesArray.map((property) => <PropertyRow key={property.id} property={property} />)}
+            {propertiesArray.map((property) =>  (
+               <tr key={property.id}>
+                   <td>{property.name}</td>
+                   <td>{property.address}</td>
+                   <td>{property.description}</td>
+
+                </tr>
+            ))}
             </tbody>
         </table>
     </div>
