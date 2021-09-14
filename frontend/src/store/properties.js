@@ -7,7 +7,7 @@ const setProperties = (properties) => ({
     properties,
 })
 //define thunks
-export const getUsers = () => async (dispatch) => {
+export const getProperties = () => async (dispatch) => {
   const res = await fetch('/api/properties', )
   const properties = await res.json();
   dispatch(setProperties(properties))
@@ -19,6 +19,10 @@ const initialState = {};
 //define a reducer
 const propertiesReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SET_PROPERTIES:
+            const newState = {}
+            action.properties.forEach(property => newState[property.id] = property);
+            return newState;
         default:
             return state;
     }
