@@ -38,7 +38,10 @@ export const createProperty = (data) => async (dispatch) => {
 };
 
 // define an initial state
-const initialState = {};
+const initialState = {
+    list: [],
+    property: {}
+};
 
 //define a reducer
 const propertiesReducer = (state = initialState, action) => {
@@ -47,9 +50,21 @@ const propertiesReducer = (state = initialState, action) => {
             const newState = {}
             action.properties.forEach(property => newState[property.id] = property);
             return newState;
-        default:
-            return state;
+
+        case CREATE_PROPERTY: {
+            if (!state[action.properties.id]) {
+                const newState = {
+                    ...state,
+                    [action.properties.id]: action.properties
+                };
+                const propertyList = newState.list.map(id => newState[id]);
+                propertyList.push(action.properties);
+             }
+            }
+            default:
+                return state;
     }
+
 };
 
 
