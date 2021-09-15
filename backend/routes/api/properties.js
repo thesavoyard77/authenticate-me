@@ -40,12 +40,19 @@ router.put(
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
         const id = await Property.findByPk(req.params.id)
-        await Property.update(
+        await id.update(
 
-            {where: req.params.id}
+            {where: {
+                id: id,
+                name: req.params.name,
+                address: req.params.address,
+                userId: req.params.userId,
+                description: req.params.description,
+                price: req.params.price,
+            }}
         )
         // const property = await Property.findByPk(id);
-        res.json(property);
+        res.json(id);
     }),
 );
 
