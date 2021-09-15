@@ -27,25 +27,27 @@
  const description = check('description').notEmpty();
  const price = check('price').isDecimal();
 
- exports.validateCreate = {
+const validateCreate = [
    name,
    address,
    userId,
    description,
    price,
    handleValidationErrors,
- };
+];
 
- exports.validateUpdate = {
+const validateUpdate = [
   name,
   address,
   userId,
   description,
   price,
   handleValidationErrors,
-};
+ ];
 
 
   module.exports = {
     handleValidationErrors,
+    validateCreate,
+    validateUpdate,
   };
