@@ -51,10 +51,20 @@ router.put(
                 price: req.params.price,
             }}
         )
-        // const property = await Property.findByPk(id);
         res.json(id);
     }),
 );
+
+router.delete(
+    '/:id',
+    asyncHandler (async(req, res)=> {
+        const property = await Property.findByPk(req.params.id);
+        if (!property) throw new Error('Cannot find that property')
+
+        await property.destroy({ where: {id: property.id }})
+        return res.json({ message: 'success' });
+    })
+)
 
 //remember to export the router too
 module.exports = router;
