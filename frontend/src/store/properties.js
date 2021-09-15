@@ -1,4 +1,4 @@
-
+// import { csrfFetch } from './csrf';
 
 // Define action types as constants
 const SET_PROPERTIES = 'properties/setProperties'
@@ -38,10 +38,7 @@ export const createProperty = (data) => async (dispatch) => {
 };
 
 // define an initial state
-const initialState = {
-    list: [],
-    property: {}
-};
+const initialState = {};
 
 //define a reducer
 const propertiesReducer = (state = initialState, action) => {
@@ -52,14 +49,11 @@ const propertiesReducer = (state = initialState, action) => {
             return newState;
 
         case CREATE_PROPERTY: {
-            if (!state[action.properties.id]) {
                 const newState = {
                     ...state,
                     [action.properties.id]: action.properties
                 };
-                const propertyList = newState.list.map(id => newState[id]);
-                propertyList.push(action.properties);
-             }
+                return newState;
             }
             default:
                 return state;
