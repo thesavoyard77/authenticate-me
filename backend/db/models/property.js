@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     userId: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    price: DataTypes.INTEGER
+    price: DataTypes.DECIMAL(7, 2)
   }, {});
   Property.associate = function(models) {
     // associations can be defined here

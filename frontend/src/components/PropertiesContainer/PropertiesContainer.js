@@ -1,4 +1,4 @@
-// import hools from 'react'. Which hook is meant for causing side effects?
+// import hooks from 'react'. Which hook is meant for causing side effects?
 // import hooks from 'react-redux'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

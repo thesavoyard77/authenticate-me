@@ -1,4 +1,5 @@
  const { validationResult } = require('express-validator');
+ const { check } = require('express-validator');
 
 
  const handleValidationErrors = (req, _res, next) => {
@@ -17,6 +18,33 @@
     }
     next();
   };
+
+ const name = check('name').notEmpty();
+ const address = check('address').notEmpty();
+ const userId = check('userId')
+    .notEmpty()
+    .isInt({min: 1})
+ const description = check('description').notEmpty();
+ const price = check('price').isDecimal();
+
+ exports.validateCreate = {
+   name,
+   address,
+   userId,
+   description,
+   price,
+   handleValidationErrors,
+ };
+
+ exports.validateUpdate = {
+  name,
+  address,
+  userId,
+  description,
+  price,
+  handleValidationErrors,
+};
+
 
   module.exports = {
     handleValidationErrors,
