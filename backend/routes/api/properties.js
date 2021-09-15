@@ -39,9 +39,30 @@ router.put(
     '/:id',
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
-        const id = await Property.update(req.body)
-        const property = await Property.one(id);
-        res.json(property);
+        const id = await Property.findByPk(req.params.id)
+        await id.update(
+
+            {where: {
+                id: id,
+                name: req.params.name,
+                address: req.params.address,
+                userId: req.params.userId,
+                description: req.params.description,
+                price: req.params.price,
+            }}
+        )
+        res.json(id);
+    }),
+);
+
+router.delete(
+    '/:id',
+    asyncHandler (async(req, res)=> {
+        const property = await Property.findByPk(req.params.id);
+        if (!property) throw new Error('Cannot find that property')
+
+        await property.destroy({ where: {id: property.id }})
+        return res.json({ message: 'success' });
     })
 )
 
