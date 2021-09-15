@@ -18,10 +18,17 @@ router.get('/', asyncHandler (async(req, res) => {
     return res.json(properties)
 }));
 
+router.get('/:id', asyncHandler (async(req, res) => {
+    const propertyId = parseInt(req.params.id, 10);
+    const property = await Property.findByPk(propertyId);
+
+    return res.json(property);
+}));
+
 router.post(
     '/',
     propertiesValidations.validateCreate,
-    asyncHandler(async function(req, res) {
+    asyncHandler(async(req, res) => {
         const property = await Property.create(req.body);
         res.json(property)
     })
@@ -32,7 +39,8 @@ router.put(
     '/:id',
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
-        const property = await Property.update(req.body);
+        const id = await Property.update(req.body)
+        const property = await Property.one(id);
         res.json(property);
     })
 )
