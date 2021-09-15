@@ -39,11 +39,15 @@ router.put(
     '/:id',
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
-        const id = await Property.update(req.body)
-        const property = await Property.one(id);
+        const id = await Property.findByPk(req.params.id)
+        await Property.update(
+
+            {where: req.params.id}
+        )
+        // const property = await Property.findByPk(id);
         res.json(property);
-    })
-)
+    }),
+);
 
 //remember to export the router too
 module.exports = router;

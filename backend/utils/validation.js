@@ -25,7 +25,7 @@
     .notEmpty()
     .isInt({min: 1})
  const description = check('description').notEmpty();
- const price = check('price').isDecimal();
+ const price = check('price').isDecimal({ decimal_digits: '2' });
 
 const validateCreate = [
    name,
