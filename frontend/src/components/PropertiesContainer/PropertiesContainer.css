@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-break: strict;
+}
+
+
+.property-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: whitesmoke;
+}
+
+.property-card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    width: 75%;
+    /* height: 25%; does nothing */
+    margin-bottom: 15px;
+    background: rgb(190, 243, 243);
+  }
+
+  /* On mouse-over, add a deeper shadow */
+  .property-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+  }
+
+  /* Add some padding inside the card container */
+  .property-container {
+    padding: 2px 16px;
+    border-radius: 15px;
+  }
+
+  #cabin {
+    width: 100%;
+    border-radius: 15px;
+  }

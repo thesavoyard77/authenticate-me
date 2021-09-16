@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/properties">
             <PropertiesContainer />
           </Route>
-          <Route path="/property/:id">
+          <Route path="/properties/:id">
             <PropertyPage />
           </Route>
         </Switch>
