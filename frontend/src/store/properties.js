@@ -87,6 +87,7 @@ export const changeProperty = (data) => async (dispatch) => {
     };
 };
 
+//delete a property
 export const deleteProperty = (data) => async (dispatch) => {
         const response = await csrfFetch(`/api/properties/${data.id}`, {
             method: 'delete'

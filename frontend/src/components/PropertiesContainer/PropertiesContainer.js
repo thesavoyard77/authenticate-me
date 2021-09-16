@@ -35,7 +35,7 @@ return (
                    <td>{property.name}</td>
                    <td>{property.address}</td>
                    <td>{property.description}</td>
-
+                   <td>{property.price}</td>
                 </tr>
             ))}
             </tbody>
