@@ -1,9 +1,10 @@
 import './EditPropertyForm.css'
 import { useState } from 'react';
-import { changeProperty } from '../../store/properties';
+import { changeProperty, deleteProperty } from '../../store/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const EditPropertyForm = () => {
 
@@ -14,7 +15,7 @@ const EditPropertyForm = () => {
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0.00)
-
+    const { id } = useParams()
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -42,10 +43,9 @@ const EditPropertyForm = () => {
 
 };
 
-// const handleCancelClick = (e) => {
-//     e.preventDefault();
-
-// }
+const deleteButton = () => {
+    dispatch(deleteProperty(id))
+}
 
 return (
 <div className="add-form-outer-wrapper">
@@ -79,7 +79,7 @@ return (
             onChange={updatePrice}
             />
         <button type="submit">Submit Your Property</button>
-        {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
+        <button type="button" onClick={deleteButton}>Remove Property</button>
         </form>
     </section>
 </div>

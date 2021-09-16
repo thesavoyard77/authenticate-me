@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import PropertiesContainer from "./components/PropertiesContainer";
 import PropertyPage from "./components/PropertyPage/PropertyPage";
 import AddPropertyForm from './components/AddPropertyFormPage/AddPropertyForm'
+import EditPropertyForm from "./components/EditPropertyForm/EditPropertyForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,8 +38,7 @@ function App() {
             <PropertyPage />
           </Route>
           <Route path="/properties/:id/edit">
-            <PropertyPage />
-
+            <EditPropertyForm />
           </Route>
         </Switch>
       )}
