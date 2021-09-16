@@ -26,7 +26,7 @@ return (
                     <th>Name</th>
                     <th>Address</th>
                     <th>Description</th>
-                    <th>Price</th>
+                    <th>Price Per Night</th>
                 </tr>
             </thead>
             <tbody className={'tbody'}>

@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PropertiesContainer from "./components/PropertiesContainer";
+import PropertyPage from "./components/PropertyPage/PropertyPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,8 +26,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/properties">
+          <Route exact path="/properties">
             <PropertiesContainer />
+          </Route>
+          <Route path="/property/:id">
+            <PropertyPage />
           </Route>
         </Switch>
       )}
