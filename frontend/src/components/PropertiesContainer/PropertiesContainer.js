@@ -28,8 +28,8 @@ return (
                     <img src={cabin} id='cabin' />
                     <div class="property-container">
                         <h2><b>{property.name}</b></h2>
-                        <p><b>Address:</b><br />{property.address}</p>
-                        <p><b>About This Property</b><br />{property.description}</p>
+                        {/* <p><b>Address:</b><br />{property.address}</p> */}
+                        {/* <p><b>About This Property</b><br />{property.description}</p> */}
                         <p><b>Price Per Night</b><br />{property.price}</p>
                     </div>
                 </div>

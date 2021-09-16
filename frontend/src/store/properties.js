@@ -15,9 +15,9 @@ const setProperties = (properties) => ({
 });
 
 //get one property by id
-const getOneProperty = (property) => ({
+const getOneProperty = (properties) => ({
     type: GET_ONE,
-    property
+    properties,
 });
 
 //Create a new property

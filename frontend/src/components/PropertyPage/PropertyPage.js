@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
+import cabin from './PropertyImg/cabin.jpg'
 
 //import thunk creator
 import { getProperty } from "../../store/properties";
@@ -14,7 +15,7 @@ const PropertyPage = () => {
     const { id } = useParams()
     const property = useSelector((state) => Object.values(state.properties))
     const dispatch = useDispatch();
-
+ console.log(property)
 
     // use a 'react' hook and cause a side effect
     useEffect(() => {
@@ -25,9 +26,9 @@ const PropertyPage = () => {
 return (
  <div className="property-outer-wrapper">
     <div className="property-second-layer">
-        <div class="property-card">
-                 <img src={ require('./PropertyImg/cabin.jpg')} />
-             <div class="property-container">
+        <div className="property-card">
+                 <img src={cabin} />
+             <div className="property-container">
                  <h2><b>{property.name}</b></h2>
                  <p>{property.address}</p>
                  <p>{property.description}</p>
