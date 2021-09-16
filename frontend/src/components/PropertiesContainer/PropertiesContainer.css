@@ -20,7 +20,8 @@ body {
     width: 75%;
     /* height: 25%; does nothing */
     margin-bottom: 15px;
-    background: rgb(190, 243, 243);
+    background: rgb(235, 246, 246);
+    border-radius: 15px;
   }
 
   /* On mouse-over, add a deeper shadow */
