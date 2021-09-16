@@ -3,13 +3,13 @@ import { useState } from 'react';
 import { createProperty } from '../../store/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
-
+import { Redirect } from 'react-router-dom';
 
 const AddPropertyForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const userId = useSelector((state)=> state.session.user.id)
+    const userId = useSelector((state)=> state.session.user?.id)
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
@@ -20,6 +20,9 @@ const AddPropertyForm = () => {
     const updateDescription = (e) => setDescription(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
 
+    if (!userId) {
+        return <Redirect to="/properties" />
+    };
 
  const handleSubmit = async (e) => {
     const payload = {
@@ -45,6 +48,7 @@ const handleCancelClick = (e) => {
 }
 
 return (
+<div className="add-form-outer-wrapper">
     <section className="new-form-holder">
         <form onSubmit={handleSubmit}>
             <input
@@ -55,14 +59,14 @@ return (
             onChange={updateName}
             />
             <input
-            type="text"
+            type="textarea"
             placeholder="Property Address"
             required
             value={address}
             onChange={updateAddress}
             />
             <input
-            type="text"
+            type="textarea"
             placeholder="Property Description"
             required
             value={description}
@@ -78,6 +82,7 @@ return (
         <button type="button" onClick={handleCancelClick}>Cancel</button>
         </form>
     </section>
+</div>
 
 );
 

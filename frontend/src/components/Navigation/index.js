@@ -13,6 +13,7 @@ function Navigation({ isLoaded }){
       <div className='navlinks'>
       <ProfileButton user={sessionUser} />
       <NavLink to="/properties">Our Properties</NavLink>
+      <NavLink to="/properties/new">Add Your Property!</NavLink>
     </div>
     );
   } else {
