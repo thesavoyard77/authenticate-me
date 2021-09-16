@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PropertiesContainer from "./components/PropertiesContainer";
 import PropertyPage from "./components/PropertyPage/PropertyPage";
+import AddPropertyForm from './components/PropertyFormPage/AddPropertyForm'
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/properties/:id">
             <PropertyPage />
+          </Route>
+          <Route path="/properties/new">
+            <AddPropertyForm />
           </Route>
         </Switch>
       )}

@@ -1,1 +1,1 @@
-export { default } from './PropertyForm';
+export { default } from './AddPropertyForm';
