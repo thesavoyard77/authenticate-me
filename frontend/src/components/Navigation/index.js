@@ -10,14 +10,18 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
+      <div className='navlinks'>
       <ProfileButton user={sessionUser} />
+      <NavLink to="/properties">Our Properties</NavLink>
+    </div>
     );
   } else {
     sessionLinks = (
-      <>
+      <div className='navlinks'>
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
-      </>
+        <NavLink to="/properties">Our Properties</NavLink>
+      </div>
     );
   }
 
