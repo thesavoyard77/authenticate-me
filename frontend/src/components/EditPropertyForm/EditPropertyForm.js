@@ -15,7 +15,8 @@ const EditPropertyForm = () => {
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0.00)
-    const { id } = useParams()
+    let { id } = useParams()
+    id = parseInt(id)
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -45,6 +46,7 @@ const EditPropertyForm = () => {
 
 const deleteButton = () => {
     dispatch(deleteProperty(id))
+    history.push(`/properties`)
 }
 
 return (
