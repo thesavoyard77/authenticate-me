@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import cabin from './PropertyImg/cabin.jpg'
 
 //import thunk creator
@@ -27,12 +27,12 @@ return (
  <div className="property-outer-wrapper">
     <div className="property-second-layer">
         <div className="property-card">
-                 <img src={cabin} />
+                 <img src={cabin} alt="placeholder" />
              <div className="property-container">
-                 <h2><b>{property.name}</b></h2>
-                 <p>{property.address}</p>
-                 <p>{property.description}</p>
-                 <p>{`Price Per Night: ${property.price}`}</p>
+                 <h2><b>{property[0].name}</b></h2>
+                 <p>{property[0].address}</p>
+                 <p>{property[0].description}</p>
+                 <p><b>Price Per Night: </b>{property[0].price}</p>
              </div>
         </div>
     </div>

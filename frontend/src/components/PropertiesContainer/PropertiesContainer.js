@@ -25,7 +25,7 @@ return (
         <div className="row">
             <div className="column">
                 <div key={property.id} class="property-card">
-                    <img src={cabin} id='cabin' />
+                    <img src={cabin} id='cabin' alt="placeholder" />
                     <div class="property-container">
                         <h2><b>{property.name}</b></h2>
                         {/* <p><b>Address:</b><br />{property.address}</p> */}
