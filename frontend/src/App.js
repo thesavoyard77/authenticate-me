@@ -32,11 +32,14 @@ function App() {
           </Route>
           <Route path="/properties/new">
             <AddPropertyForm />
-          </Route>
-          <Route path="/properties/:id">
+            </Route>
+          <Route path="/properties/:id" exact>
             <PropertyPage />
           </Route>
+          <Route path="/properties/:id/edit">
+            <PropertyPage />
 
+          </Route>
         </Switch>
       )}
     </>

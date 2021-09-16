@@ -1,11 +1,11 @@
-import './PropertyForm.css'
+import './EditPropertyForm.css'
 import { useState } from 'react';
-import { createProperty } from '../../store/properties';
+import { changeProperty } from '../../store/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
 
-const AddPropertyForm = () => {
+const EditPropertyForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -34,7 +34,7 @@ const AddPropertyForm = () => {
     };
 
 
-   const property = await dispatch(createProperty(payload));
+   const property = await dispatch(changeProperty(payload));
    if (property){
         history.push(`/properties/${property.id}`)
 
@@ -88,4 +88,4 @@ return (
 
 };
 
-export default AddPropertyForm;
+export default EditPropertyForm;
