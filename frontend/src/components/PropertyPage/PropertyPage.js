@@ -25,7 +25,7 @@ const PropertyPage = () => {
     const history = useHistory();
     const propertyId = id;
     const propertyObj = property[0];
-    const cost = parseInt(propertyObj.price)
+    const cost = parseInt(propertyObj?.price || 0);
 
  const updateStart = (e) => setStartDate(e.target.value)
  const updateEnd = (e) => setEndDate(e.target.value)
@@ -35,8 +35,9 @@ const PropertyPage = () => {
     },[dispatch, id])
     const begin = new Date(startDate)
     const end = new Date(endDate)
-    const lengthOfStay = end - begin;
-    console.log(lengthOfStay)
+
+    const lengthOfStay =( end - begin) / 86400;
+
     const totalPrice = cost * lengthOfStay;
  const handleSubmit = async (e) => {
     e.preventDefault()
