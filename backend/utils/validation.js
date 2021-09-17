@@ -30,8 +30,8 @@
  const propertyId = check('propertyId')
     .notEmpty()
     .isInt({min: 1})
- const startDate = check('startDate').isISO8601().toDate()
- const endDate = check('endDate').isISO8601().toDate().isAfter(startDate)
+ const startDate = check('startDate').toDate()
+ const endDate = check('endDate').toDate()
  const totalPrice = check('totalPrice').isCurrency()
 
 const validateCreate = [
