@@ -33,7 +33,7 @@ router.post(
         res.json(property)
     })
 
-)
+);
 
 router.put(
     '/:id',

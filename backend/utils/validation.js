@@ -60,7 +60,7 @@ const validateUpdate = [
   endDate,
   totalPrice,
   handleValidationErrors,
-]
+];
 
 
   module.exports = {
