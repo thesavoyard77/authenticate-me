@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     propertyId: DataTypes.INTEGER,
     startDate: DataTypes.DATEONLY,
     endDate: DataTypes.DATEONLY,
-    totalPrice: DataTypes.DECIMAL(7, 2)
+    totalPrice: DataTypes.DECIMAL(10, 2)
   }, {});
   Reservation.associate = function(models) {
     // associations can be defined here

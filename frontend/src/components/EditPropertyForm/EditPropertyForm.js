@@ -1,11 +1,12 @@
-import './PropertyForm.css'
+import './EditPropertyForm.css'
 import { useState } from 'react';
-import { createProperty } from '../../store/properties';
+import { changeProperty, deleteProperty } from '../../store/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
+import { useParams } from 'react-router';
 
-const AddPropertyForm = () => {
+const EditPropertyForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -14,7 +15,9 @@ const AddPropertyForm = () => {
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0.00)
-
+    let { id } = useParams();
+    id = parseInt(id);
+    // console.log(id)
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -34,7 +37,7 @@ const AddPropertyForm = () => {
     };
 
 
-   const property = await dispatch(createProperty(payload));
+   const property = await dispatch(changeProperty(payload));
    if (property){
         history.push(`/properties/${property.id}`)
 
@@ -42,10 +45,10 @@ const AddPropertyForm = () => {
 
 };
 
-// const handleCancelClick = (e) => {
-//     e.preventDefault();
-
-// }
+const deleteButton = () => {
+    dispatch(deleteProperty(id))
+    history.push(`/properties`)
+};
 
 return (
 <div className="add-form-outer-wrapper">
@@ -58,15 +61,15 @@ return (
             value={name}
             onChange={updateName}
             />
-            <textarea
-            type="text"
+            <input
+            type="textarea"
             placeholder="Property Address"
             required
             value={address}
             onChange={updateAddress}
             />
-            <textarea
-            type="text"
+            <input
+            type="textarea"
             placeholder="Property Description"
             required
             value={description}
@@ -79,7 +82,7 @@ return (
             onChange={updatePrice}
             />
         <button type="submit">Submit Your Property</button>
-        {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
+        <button type="button" onClick={deleteButton}>Remove Property</button>
         </form>
     </section>
 </div>
@@ -88,4 +91,4 @@ return (
 
 };
 
-export default AddPropertyForm;
+export default EditPropertyForm;
