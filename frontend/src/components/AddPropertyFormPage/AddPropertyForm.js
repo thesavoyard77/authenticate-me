@@ -34,11 +34,11 @@ const AddPropertyForm = () => {
     };
 
 
-   const property = await dispatch(createProperty(payload));
-   if (property){
-        history.push(`/properties/${property.id}`)
+    const property = await dispatch(createProperty(payload));
+    if (property){
+         history.push(`/properties/${property.id}`)
 
-    };
+     };
 
 };
 
