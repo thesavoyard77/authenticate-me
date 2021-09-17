@@ -89,7 +89,8 @@ export const changeProperty = (data) => async (dispatch) => {
 
 //delete a property
 export const deleteProperty = (data) => async (dispatch) => {
-        const response = await csrfFetch(`/api/properties/${data.id}`, {
+    console.log(data)
+        const response = await csrfFetch(`/api/properties/${data}`, {
             method: 'delete'
         })
         if(response.ok) {
@@ -129,11 +130,11 @@ const propertiesReducer = (state = initialState, action) => {
              };
                 return newState;
             }
-        case DELETE_PROPERTY: {
-            const newState = {...state};
-            delete newState[action.data.id]
-            return newState;
-        }
+            case DELETE_PROPERTY: {
+                const newState = {...state};
+                delete newState[action.property]
+                return newState;
+            }
             default:
                 return state;
     }

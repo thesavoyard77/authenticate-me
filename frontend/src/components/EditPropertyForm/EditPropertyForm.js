@@ -15,8 +15,9 @@ const EditPropertyForm = () => {
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0.00)
-    let { id } = useParams()
-    id = parseInt(id)
+    let { id } = useParams();
+    id = parseInt(id);
+    // console.log(id)
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -47,7 +48,7 @@ const EditPropertyForm = () => {
 const deleteButton = () => {
     dispatch(deleteProperty(id))
     history.push(`/properties`)
-}
+};
 
 return (
 <div className="add-form-outer-wrapper">

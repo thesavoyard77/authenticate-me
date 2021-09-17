@@ -27,6 +27,13 @@
  const description = check('description').notEmpty();
  const price = check('price').isDecimal({ decimal_digits: '2' });
 
+ const propertyId = check('propertyID')
+    .notEmpty()
+    .isInt({min: 1})
+ const startDate = check('startDate').isISO8601().toDate()
+ const endDate = check('endDate').isISO8601().toDate().isAfter(startDate)
+ const totalPrice = check('totalPrice').isCurrency()
+
 const validateCreate = [
    name,
    address,
@@ -35,6 +42,7 @@ const validateCreate = [
    price,
    handleValidationErrors,
 ];
+
 
 const validateUpdate = [
   name,
@@ -45,9 +53,19 @@ const validateUpdate = [
   handleValidationErrors,
  ];
 
+ validateReservationCreate= [
+  userId,
+  propertyId,
+  startDate,
+  endDate,
+  totalPrice,
+  handleValidationErrors,
+]
+
 
   module.exports = {
     handleValidationErrors,
     validateCreate,
     validateUpdate,
+    validateReservationCreate,
   };

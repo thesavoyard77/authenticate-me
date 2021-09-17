@@ -58,15 +58,15 @@ return (
             value={name}
             onChange={updateName}
             />
-            <input
-            type="textarea"
+            <textarea
+            type="text"
             placeholder="Property Address"
             required
             value={address}
             onChange={updateAddress}
             />
-            <input
-            type="textarea"
+            <textarea
+            type="text"
             placeholder="Property Description"
             required
             value={description}
