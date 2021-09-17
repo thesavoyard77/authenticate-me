@@ -42,13 +42,13 @@ router.post(
             totalPrice,
         } = req.body;
 
-        const reservation = {
+        const reservation = await Reservation.create({
             userId,
             propertyId,
             startDate,
             endDate,
             totalPrice,
-        };
+        });
         res.json(reservation)
     })
 );

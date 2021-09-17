@@ -18,16 +18,16 @@
     }
     next();
   };
-
+// properties
  const name = check('name').notEmpty();
  const address = check('address').notEmpty();
- const userId = check('userId')
+ const userId = check('userId') //shared
     .notEmpty()
     .isInt({min: 1})
  const description = check('description').notEmpty();
  const price = check('price').isDecimal({ decimal_digits: '2' });
-
- const propertyId = check('propertyID')
+//reservations
+ const propertyId = check('propertyId')
     .notEmpty()
     .isInt({min: 1})
  const startDate = check('startDate').isISO8601().toDate()
