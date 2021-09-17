@@ -20,11 +20,12 @@ const PropertyPage = () => {
     const property = useSelector((state) => Object.values(state.properties))
     const dispatch = useDispatch();
     const userId = useSelector((state)=> state.session.user?.id)
-    const { startDate, setStartDate } = useState(Date.now)
-    const { endDate, setEndDate } = useState(Date.now)
+    const [ startDate, setStartDate ] = useState(Date.now)
+    const [ endDate, setEndDate ] = useState(Date.now)
     const history = useHistory();
     const propertyId = id;
-    //  console.log(property)
+    const propertyObj = property[0];
+// console.log(propertyObj.price)
 
  const updateStart = (e) => setStartDate(e.target.value)
  const updateEnd = (e) => setEndDate(e.target.value)
@@ -34,8 +35,8 @@ const PropertyPage = () => {
     },[dispatch, id])
 
     const lengthOfStay = endDate - startDate;
-    const totalPrice = property.price * lengthOfStay;
-
+    console.log(lengthOfStay)
+    const totalPrice = propertyObj.price * lengthOfStay;
  const handleSubmit = async (e) => {
     e.preventDefault()
      const payload = {
@@ -72,12 +73,14 @@ return (
                 <form onSubmit={handleSubmit} >
                     <input
                         type="date"
+                        required
                         value={startDate}
                         min={startDate}
                         onChange={updateStart}
                         /><br />
                     <input
                         type="date"
+                        required
                         value={endDate}
                         min={startDate}
                         onChange={updateEnd}
