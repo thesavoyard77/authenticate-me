@@ -3,7 +3,7 @@ const router = express.Router();
 // since we're doing database stuff,
 // you'll want some kind of asyncHandler
 const asyncHandler = require('express-async-handler');
-const validateReservationCreate = require('../../utils/validation')
+const ReservationsValidations = require('../../utils/validation')
 const { check, validationResult } = require('express-validator');
 //take a second to import the database stuff you'll need
 const { Reservation } = require('../../db/models');
@@ -32,7 +32,7 @@ router.get('/:id', asyncHandler (async(req, res) => {
 
 router.post(
     '/',
-    validateReservationCreate.validateCreate,
+    ReservationsValidations.validateReservationCreate,
     asyncHandler (async(req, res) => {
         const {
             userId,
@@ -53,6 +53,17 @@ router.post(
     })
 );
 
+//delete a reservation
+router.delete(
+    '/:id',
+    asyncHandler (async(req, res) => {
+        const reservation = await Reservation.findByPk(req.params.id);
+        if (!reservation) throw new Error("Cannot find that reservation");
+
+        await reservation.destroy({ where: {id: reservation.id}})
+        return res.json({ message: 'Success!'})
+    })
+)
 
 //remember to export the router too
 module.exports = router;
