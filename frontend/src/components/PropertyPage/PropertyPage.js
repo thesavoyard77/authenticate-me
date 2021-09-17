@@ -25,7 +25,7 @@ const PropertyPage = () => {
     const history = useHistory();
     const propertyId = id;
     const propertyObj = property[0];
-// console.log(propertyObj.price)
+    const cost = parseInt(propertyObj.price)
 
  const updateStart = (e) => setStartDate(e.target.value)
  const updateEnd = (e) => setEndDate(e.target.value)
@@ -33,10 +33,11 @@ const PropertyPage = () => {
     useEffect(() => {
         dispatch(getProperty(id));
     },[dispatch, id])
-
-    const lengthOfStay = endDate - startDate;
+    const begin = new Date(startDate)
+    const end = new Date(endDate)
+    const lengthOfStay = end - begin;
     console.log(lengthOfStay)
-    const totalPrice = propertyObj.price * lengthOfStay;
+    const totalPrice = cost * lengthOfStay;
  const handleSubmit = async (e) => {
     e.preventDefault()
      const payload = {
