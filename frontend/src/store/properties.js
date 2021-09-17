@@ -1,11 +1,11 @@
 import { csrfFetch } from './csrf';
 
 // Define action types as constants
-const SET_PROPERTIES = 'properties/setProperties'
-const CREATE_PROPERTY = 'properties/createProperties'
-const GET_ONE = 'properties/oneProperty'
-const CHANGE_PROPERTY = 'properties/changeProperty'
-const DELETE_PROPERTY = 'properties/deleteProperty'
+const SET_PROPERTIES = 'properties/setProperties';
+const CREATE_PROPERTY = 'properties/createProperties';
+const GET_ONE = 'properties/oneProperty';
+const CHANGE_PROPERTY = 'properties/changeProperty';
+const DELETE_PROPERTY = 'properties/deleteProperty';
 // define action creators
 
 //get all properties
@@ -42,7 +42,7 @@ const deleteOneProperty = (property) => ({
 
 //get all properties
 export const getProperties = () => async (dispatch) => {
-  const res = await fetch('/api/properties', )
+  const res = await fetch('/api/properties')
   const properties = await res.json();
   dispatch(setProperties(properties))
 };
@@ -83,15 +83,14 @@ export const changeProperty = (data) => async (dispatch) => {
     if(response.ok) {
         const property = await response.json();
         dispatch(changeOneProperty(property));
-        return property
+        return property;
     };
 };
 
 //delete a property
 export const deleteProperty = (data) => async (dispatch) => {
-    console.log(data)
         const response = await csrfFetch(`/api/properties/${data}`, {
-            method: 'delete'
+            method: 'delete',
         })
         if(response.ok) {
             dispatch(deleteOneProperty(data));

@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/thesavoyard77/authenticate-me/issues"
   },
-  "homepage": "https://github.com/thesavoyard77/authenticate-me#readme"
+  "homepage": "https://github.com/thesavoyard77/authenticate-me#readme",
+  "dependencies": {}
 }

@@ -18,20 +18,20 @@
     }
     next();
   };
-
+// properties
  const name = check('name').notEmpty();
  const address = check('address').notEmpty();
- const userId = check('userId')
+ const userId = check('userId') //shared
     .notEmpty()
     .isInt({min: 1})
  const description = check('description').notEmpty();
  const price = check('price').isDecimal({ decimal_digits: '2' });
-
- const propertyId = check('propertyID')
+//reservations
+ const propertyId = check('propertyId')
     .notEmpty()
     .isInt({min: 1})
- const startDate = check('startDate').isISO8601().toDate()
- const endDate = check('endDate').isISO8601().toDate().isAfter(startDate)
+ const startDate = check('startDate').toDate()
+ const endDate = check('endDate').toDate()
  const totalPrice = check('totalPrice').isCurrency()
 
 const validateCreate = [
@@ -60,7 +60,7 @@ const validateUpdate = [
   endDate,
   totalPrice,
   handleValidationErrors,
-]
+];
 
 
   module.exports = {

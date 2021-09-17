@@ -25,6 +25,7 @@ if (!isProduction) {
   }));
 
   // Set the _csrf token and create req.csrfToken method
+  //Comment this out to use Postman to test backend routes
   app.use(
     csurf({
       cookie: {
