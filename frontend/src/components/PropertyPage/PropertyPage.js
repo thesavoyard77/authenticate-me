@@ -33,6 +33,9 @@ const PropertyPage = () => {
         dispatch(getProperty(id));
     },[dispatch, id])
 
+    const lengthOfStay = endDate - startDate;
+    const totalPrice = property.price * lengthOfStay;
+
  const handleSubmit = async (e) => {
     e.preventDefault()
      const payload = {
@@ -40,7 +43,7 @@ const PropertyPage = () => {
          propertyId,
          startDate,
          endDate,
-        //  totalPrice,
+         totalPrice,
      }
 
      const reservation = await dispatch(createReservation(payload));
@@ -78,7 +81,8 @@ return (
                         value={endDate}
                         min={startDate}
                         onChange={updateEnd}
-                        /><br />
+                        />
+                        <button type="submit">Submit</button>
                 </form>
             </div>
         </div>
