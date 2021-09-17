@@ -8,10 +8,13 @@ import cabin from './PropertyImg/cabin.jpg'
 import "./PropertyPage.css"
 //import thunk creator
 import { getProperty } from "../../store/properties";
+import { createReservation } from "../../store/reservations";
 
 
 const PropertyPage = () => {
     //declare variables from hooks
+
+    // id is property id from url
     const { id } = useParams()
     const property = useSelector((state) => Object.values(state.properties))
     const dispatch = useDispatch();
