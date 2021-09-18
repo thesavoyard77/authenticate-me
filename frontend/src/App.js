@@ -9,6 +9,7 @@ import PropertiesContainer from "./components/PropertiesContainer";
 import PropertyPage from "./components/PropertyPage/PropertyPage";
 import AddPropertyForm from './components/AddPropertyFormPage/AddPropertyForm'
 import EditPropertyForm from "./components/EditPropertyForm/EditPropertyForm";
+import ReservationsPage from "./components/ReservationsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/properties/:id/edit">
             <EditPropertyForm />
+          </Route>
+          <Route path="/reservations">
+            <ReservationsPage />
           </Route>
         </Switch>
       )}

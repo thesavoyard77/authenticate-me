@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import thunk creator
 import { getProperties } from '../../store/properties';
-import  "./PropertiesContainer.css"
-import cabin from './PropertyImg/cabin.jpg'
+import  "./PropertiesContainer.css";
+import cabin from './PropertyImg/cabin.jpg';
 
 const PropertiesContainer = () => {
 //declare variables from hooks
