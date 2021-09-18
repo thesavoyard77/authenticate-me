@@ -19,11 +19,12 @@ console.log(reservations)
 // use a 'react' hook and cause a side effect
 useEffect(()=> {
     dispatch(getProperties());
-}, [dispatch]);
-
-useEffect(()=> {
     dispatch(getReservations());
 }, [dispatch]);
+
+
+
+
 
 return (
 <div className={'property-wrapper'}>
