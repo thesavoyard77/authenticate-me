@@ -7,13 +7,13 @@
   }
 
 
-  .property-wrapper {
+  .reservation-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: whitesmoke;
   }
 
-  .property-card {
+  .reservation-card {
       /* Add shadows to create the "card" effect */
       box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
       transition: 0.3s;
@@ -30,7 +30,7 @@
     }
 
     /* Add some padding inside the card container */
-    .property-container {
+    .reservation-container {
       padding: 2px 16px;
       border-radius: 15px;
     }

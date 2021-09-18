@@ -11,15 +11,17 @@ import cabin from './PropertyImg/cabin.jpg';
 const ReservationsPage = () => {
 //declare variables from hooks
 const dispatch = useDispatch();
-const reservations = useSelector((state)=> state.reservations)
+const reservations = useSelector((state)=> state.reservation)
 const properties = useSelector((state) => state.properties);
 const userId = useSelector((state)=> state.session.user?.id)
-const propertiesArray = Object.values(properties);
-console.log(reservations)
+const reservationsArray = Object.values(reservations);
+// console.log("---------------->",reservations)
+// console.log("---------------->",properties)
 // use a 'react' hook and cause a side effect
 useEffect(()=> {
     dispatch(getProperties());
     dispatch(getReservations());
+    dispatch(deleteReservation());
 }, [dispatch]);
 
 
@@ -27,15 +29,18 @@ useEffect(()=> {
 
 
 return (
-<div className={'property-wrapper'}>
-    {propertiesArray.map((property) =>  (
-        <div  key={property.id} className="row">
+<div className={'reservation-wrapper'}>
+    {reservationsArray.map((reservation) =>  (
+        <div  key={reservation.id} className="row">
             <div className="column">
-                <div className="property-card">
+                <div className="reservation-card">
                     <img src={cabin} id='cabin' alt="placeholder" />
-                    <div className="property-container">
-                        <h2><b>{property.name}</b></h2>
-                        <p><b>Price Per Night</b><br /><b>$</b>{property.price}</p>
+                    <div className="reservation-container">
+                        <h2><b>{reservation.userId}</b></h2>
+                        <p><b>Total Price</b><br /><b>$</b>{reservation.totalPrice}</p>
+                    </div>
+                    <div>
+                        
                     </div>
                 </div>
             </div>

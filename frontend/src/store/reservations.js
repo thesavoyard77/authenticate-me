@@ -44,7 +44,7 @@ const deleteOneReservation = (reservations) => ({
 export const getReservations = () => async (dispatch) => {
     const res = await csrfFetch('/api/reservations')
     const reservations = await res.json();
-    console.log(reservations)
+
     dispatch(setReservations(reservations))
 };
 
