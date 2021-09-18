@@ -13,10 +13,12 @@ const DELETE_RESERVATION = 'reservations/deleteReservation'
 
 // define action creators
 //Get reservations
-const setReservations = (reservations) => ({
+const setReservations = (reservations) => {
+return {
     type: SET_RESERVATIONS,
-    reservations,
-});
+    reservations
+ }
+};
 
 //Get one reservation
 const getOneReservation = (reservations) => ({
@@ -42,6 +44,7 @@ const deleteOneReservation = (reservations) => ({
 export const getReservations = () => async (dispatch) => {
     const res = await csrfFetch('/api/reservations')
     const reservations = await res.json();
+    console.log(reservations)
     dispatch(setReservations(reservations))
 };
 
