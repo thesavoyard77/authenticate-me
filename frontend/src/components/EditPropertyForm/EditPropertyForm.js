@@ -82,7 +82,7 @@ return (
             onChange={updatePrice}
             />
         <button type="submit">Submit Your Property</button>
-        <button type="button" onClick={deleteButton}>Remove Property</button>
+        <button type="button" onClick={deleteButton}>Cancel Reservation</button>
         </form>
     </section>
 </div>

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProperties } from '../../store/properties';
 import  "./PropertiesContainer.css";
 import cabin from './PropertyImg/cabin.jpg';
-
+import { NavLink } from 'react-router-dom';
 const PropertiesContainer = () => {
 //declare variables from hooks
 const dispatch = useDispatch();
@@ -25,7 +25,7 @@ return (
         <div  key={property.id} className="row">
             <div className="column">
                 <div className="property-card">
-                    <img src={cabin} id='cabin' alt="placeholder" />
+                    <NavLink to={`/properties/${property.id}`}><img src={cabin} id='cabin' alt="placeholder" /></NavLink>
                     <div className="property-container">
                         <h2><b>{property.name}</b></h2>
                         <p><b>Price Per Night</b><br /><b>$</b>{property.price}</p>
