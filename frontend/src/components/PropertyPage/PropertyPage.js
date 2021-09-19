@@ -57,6 +57,9 @@ const PropertyPage = () => {
       };
  }
 
+ const toEditPage = () => {
+    history.push(`/properties/${id}/edit`)
+ }
 
 
 if (!property[0]) return null;
@@ -65,22 +68,25 @@ return (
     <div className="property-second-layer">
 
         <div className="property-card">
-                 <img src={cabin} alt="placeholder" />
+                 <img src={cabin} alt="placeholder" id="cabin-photo"/>
              <div className="property-container">
                  <h2><b>{property[0].name}</b></h2>
-                 <p>{property[0].address}</p>
-                 <p>{property[0].description}</p>
+                 <p><b>Address: </b>{property[0].address}</p>
+                 <p><b>Description: </b>{property[0].description}</p>
                  <p><b>Price Per Night: </b>{property[0].price}</p>
              </div>
                 <div className="calendars">
                 <form onSubmit={handleSubmit} >
+                    <div>
+                <p><b>Start Date:</b></p>
                     <input
                         type="date"
                         required
                         value={startDate}
                         min={startDate}
                         onChange={updateStart}
-                        /><br />
+                        />
+                        <p><b>End Date:</b></p>
                     <input
                         type="date"
                         required
@@ -88,7 +94,9 @@ return (
                         min={startDate}
                         onChange={updateEnd}
                         />
-                        <button type="submit">Submit</button>
+                        </div>
+                        <button type="submit">Submit Reservation</button>
+                        <button type="submit" onClick={toEditPage}>Edit Property</button>
                 </form>
             </div>
         </div>

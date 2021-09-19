@@ -12,29 +12,30 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div className='navlinks'>
       <ProfileButton user={sessionUser} />
-      <NavLink to="/properties">Our Properties</NavLink>
-      <NavLink to="/properties/new">Add Your Property!</NavLink>
-      <NavLink to={`/users/${sessionUser.id}/reservations`}>See Your Reservations</NavLink>
+      <NavLink style={{ textDecoration: 'none' }} to="/properties">Our Properties</NavLink>
+      <NavLink style={{ textDecoration: 'none' }} to="/properties/new">Add Your Property</NavLink>
+      <NavLink style={{ textDecoration: 'none' }} to={`/users/${sessionUser.id}/reservations`}>See Your Reservations</NavLink>
 
     </div>
     );
   } else {
     sessionLinks = (
-      <div className='navlinks'>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <NavLink to="/properties">Our Properties</NavLink>
+      <div className='navlinks-wrapper'>
+        <NavLink className="nav" to="/login">Log In</NavLink>
+        <NavLink className="nav" to="/signup">Sign Up</NavLink>
+        <NavLink className="nav" to="/properties">Our Properties</NavLink>
       </div>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+<div id='nav-wrapper'>
+    <div>
+
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+
+   </div>
+</div>
   );
 }
 
