@@ -20,8 +20,9 @@ const ReservationPage = () => {
     const dispatch = useDispatch();
     const userId = useSelector((state)=> state.session.user?.id)
     const history = useHistory();
-    const reservation = useSelector((state) => state.reservation)
-
+    const reservation = useSelector((state) => Object.values(state.reservation))
+    console.table(reservation)
+    console.log('==========>', reservation)
 
 
 
@@ -46,7 +47,7 @@ return (
     <div className="reservation-second-layer">
 
         <div className="reservation-card">
-                 <img className="cabin-pic" src={cabin} alt="placeholder" />
+                 <img id="cabin-pic" src={cabin} alt="placeholder" />
              <div className="reservation-container">
                 {/* {reservation?.forEach((property) => (
                         console.log(property)

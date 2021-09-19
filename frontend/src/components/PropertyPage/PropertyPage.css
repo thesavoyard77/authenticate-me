@@ -16,3 +16,20 @@
   .property-container {
     padding: 2px 16px;
   }
+
+  .property-outer-wrapper {
+    margin: 0 auto;
+  }
+  h2 {
+    text-align: center;
+  }
+  #cabin-photo {
+    width: 85%;
+    border-radius: 8px;
+  }
+
+  .property-outer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
