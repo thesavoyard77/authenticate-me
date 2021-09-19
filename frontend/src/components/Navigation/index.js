@@ -14,6 +14,8 @@ function Navigation({ isLoaded }){
       <ProfileButton user={sessionUser} />
       <NavLink to="/properties">Our Properties</NavLink>
       <NavLink to="/properties/new">Add Your Property!</NavLink>
+      <NavLink to={`/users/${sessionUser.id}/reservations`}>See Your Reservations</NavLink>
+
     </div>
     );
   } else {

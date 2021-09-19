@@ -9,7 +9,8 @@ import PropertiesContainer from "./components/PropertiesContainer";
 import PropertyPage from "./components/PropertyPage/PropertyPage";
 import AddPropertyForm from './components/AddPropertyFormPage/AddPropertyForm'
 import EditPropertyForm from "./components/EditPropertyForm/EditPropertyForm";
-import ReservationsPage from "./components/ReservationsPage";
+import UsersPage from "./components/UserPage/UserPage";
+import ReservationPage from "./components/ReservationPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,8 +42,11 @@ function App() {
           <Route path="/properties/:id/edit">
             <EditPropertyForm />
           </Route>
-          <Route path="/reservations">
-            <ReservationsPage />
+          <Route path="/users/:id/reservations">
+            <UsersPage />
+          </Route>
+          <Route path="/reservations/:id">
+            <ReservationPage />
           </Route>
         </Switch>
       )}

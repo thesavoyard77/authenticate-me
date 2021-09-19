@@ -5,7 +5,7 @@ import { csrfFetch } from "./csrf";
 //Get reservations
 const SET_RESERVATIONS = 'reservations/setReservations';
 //Get one reservation
-const GET_ONE = 'reservations/oneReservation'
+const GET_RESERVATION = 'reservations/getReservation'
 //Post a new reservation
 const CREATE_RESERVATION = 'reservations/createReservation'
 //delete a reservation
@@ -21,9 +21,9 @@ return {
 };
 
 //Get one reservation
-const getOneReservation = (reservations) => ({
-    type: GET_ONE,
-    reservations,
+const getOneReservation = (reservation) => ({
+    type: GET_RESERVATION,
+    reservation,
 })
 
 //Post a new reservation
@@ -50,7 +50,7 @@ export const getReservations = () => async (dispatch) => {
 
 //Get one reservation
 export const getReservation = (id) => async (dispatch) => {
- const response = await csrfFetch(`/api/reservations/${id}`)
+ const response = await fetch(`/api/reservations/${id}`)
 
  if (response.ok) {
      const reservation =await response.json();
@@ -87,16 +87,18 @@ const initialState = {};
 
 //define a reducer
 const reservationsReducer = (state = initialState, action) => {
+    let newState;
  switch (action.type) {
      case SET_RESERVATIONS:
-        const newState = {}
+        newState = {}
         action.reservations.forEach(reservation => newState[reservation.id] = reservation)
         return newState;
-     case GET_ONE: {
-         const newState = {
-             [action.reservations.id]: action.reservations
+     case GET_RESERVATION: {
+             newState = {
+             ...state,
+             [action.reservation.id]: action.reservation
          }
-         return newState;
+             return newState;
          }
      case CREATE_RESERVATION: {
          const newState = {

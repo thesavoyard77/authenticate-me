@@ -33,10 +33,11 @@ const PropertyPage = () => {
     useEffect(() => {
         dispatch(getProperty(id));
     },[dispatch, id])
+
     const begin = new Date(startDate)
     const end = new Date(endDate)
 
-    const lengthOfStay =( end - begin) / 86400;
+    const lengthOfStay =( end - begin) / 86400000;
 
     const totalPrice = cost * lengthOfStay;
  const handleSubmit = async (e) => {
@@ -51,7 +52,7 @@ const PropertyPage = () => {
 
      const reservation = await dispatch(createReservation(payload));
      if (reservation){
-          history.push(`/reservations`)
+          history.push(`/users/${userId}/reservations`)
 
       };
  }
