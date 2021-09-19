@@ -57,6 +57,9 @@ const PropertyPage = () => {
       };
  }
 
+ const toEditPage = () => {
+    history.push(`/properties/${id}/edit`)
+ }
 
 
 if (!property[0]) return null;
@@ -92,7 +95,8 @@ return (
                         onChange={updateEnd}
                         />
                         </div>
-                        <button type="submit">Submit</button>
+                        <button type="submit">Submit Reservation</button>
+                        <button type="submit" onClick={toEditPage}>Edit Property</button>
                 </form>
             </div>
         </div>

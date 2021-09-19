@@ -48,6 +48,9 @@ function App() {
           <Route path="/reservations/:id">
             <ReservationPage />
           </Route>
+          <Route exact path="/">
+            <PropertiesContainer />
+          </Route>
         </Switch>
       )}
     </>

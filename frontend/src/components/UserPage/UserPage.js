@@ -48,7 +48,7 @@ return (
                         <h2><b>Reservation Number: {reservation.id}</b></h2>
                         <p><b>Total Price</b><br /><b>$</b>{reservation.totalPrice}</p>
                         <p><b>Dates of Stay</b><br /><b></b>{reservation.startDate} to {reservation.endDate}</p>
-                        <div id="button">{<button type="button" onClick={()=> ModifyRes(reservation.id)}>Cancel</button>}</div>
+                        <div id="button">{<button type="button" onClick={()=> ModifyRes(reservation.id)}>Details</button>}</div>
                     </div>
                     <div>
 

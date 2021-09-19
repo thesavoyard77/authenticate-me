@@ -21,8 +21,8 @@ const ReservationPage = () => {
     const userId = useSelector((state)=> state.session.user?.id)
     const history = useHistory();
     const reservation = useSelector((state) => Object.values(state.reservation))
-    console.table(reservation)
-    console.log('==========>', reservation)
+    const property = reservation[0]?.Property;
+    // console.log('==========>', property)
 
 
 
@@ -49,9 +49,11 @@ return (
         <div className="reservation-card">
                  <img id="cabin-pic" src={cabin} alt="placeholder" />
              <div className="reservation-container">
-                {/* {reservation?.forEach((property) => (
-                        console.log(property)
-                ))} */}
+                <h2><b>{property?.name}</b></h2>
+                <p>{property?.address}</p>
+                <p><b>Start Date: </b>{reservation[0]?.startDate} <b>To: </b>{reservation[0]?.endDate}</p>
+                <p><b>Total Price of Stay: $</b>{reservation[0]?.totalPrice}</p>
+                <button onClick={handleDelete}>Cancel</button>
              </div>
         </div>
     </div>
