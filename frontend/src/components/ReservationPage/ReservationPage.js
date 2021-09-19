@@ -3,7 +3,7 @@ import cabin from './PropertyImg/cabin.jpg'
 // import hooks from 'react'. Which hook is meant for causing side effects?
 // import hooks from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { Redirect } from 'react-router';
