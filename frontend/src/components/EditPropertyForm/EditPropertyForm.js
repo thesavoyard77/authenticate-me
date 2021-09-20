@@ -14,7 +14,7 @@ const EditPropertyForm = () => {
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(0.00)
+    const [price, setPrice] = useState("$0.00")
     let { id } = useParams();
     id = parseInt(id);
     // console.log(id)
@@ -51,38 +51,42 @@ const deleteButton = () => {
 };
 
 return (
-<div className="add-form-outer-wrapper">
-    <section className="new-form-holder">
-        <form onSubmit={handleSubmit}>
+<div className="edit-form-outer-wrapper">
+    <section className="edit-form-holder">
+        <form onSubmit={handleSubmit} className="edit-property-form">
+        <label className="form-label">Name of Your Property</label>
             <input
             type="text"
-            placeholder="Property Name"
+            placeholder="Should have bear in it..."
             required
             value={name}
             onChange={updateName}
             />
-            <input
-            type="textarea"
-            placeholder="Property Address"
+            <label className="form-label">Property Address</label>
+            <textarea
+            type="text"
+            placeholder="123 Easy St..."
             required
             value={address}
             onChange={updateAddress}
             />
-            <input
+            <label className="form-label">Property Description</label>
+            <textarea
             type="textarea"
             placeholder="Property Description"
             required
             value={description}
             onChange={updateDescription}
             />
+            <label className="form-label">Price Per Night</label>
             <input
-            type="number"
+            type="currency"
             required
             value={price}
             onChange={updatePrice}
             />
-        <button type="submit">Submit Your Property</button>
-        <button type="button" onClick={deleteButton}>Cancel Reservation</button>
+        <button type="submit" className="edit-property-submit">Submit Your Property</button>
+        {/* <button type="button" onClick={deleteButton}>Remove Property</button> */}
         </form>
     </section>
 </div>

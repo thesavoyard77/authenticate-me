@@ -13,7 +13,7 @@ const AddPropertyForm = () => {
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(0.00)
+    const [price, setPrice] = useState("$0.00")
 
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
@@ -42,29 +42,28 @@ const AddPropertyForm = () => {
 
 };
 
-// const handleCancelClick = (e) => {
-//     e.preventDefault();
-
-// }
 
 return (
 <div className="add-form-outer-wrapper">
     <section className="new-form-holder">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="add-property-form">
+            <label className="form-label">Name of Your Property</label>
             <input
             type="text"
-            placeholder="Property Name"
+            placeholder="Should have bear in it..."
             required
             value={name}
             onChange={updateName}
             />
+            <label className="form-label">Property Address</label>
             <textarea
             type="text"
-            placeholder="Property Address"
+            placeholder="123 Easy St..."
             required
             value={address}
             onChange={updateAddress}
             />
+            <label className="form-label">Property Description</label>
             <textarea
             type="text"
             placeholder="Property Description"
@@ -72,13 +71,15 @@ return (
             value={description}
             onChange={updateDescription}
             />
+            <label className="form-label">Price Per Night</label>
             <input
-            type="number"
+            type="currency"
             required
             value={price}
             onChange={updatePrice}
             />
-        <button type="submit">Submit Your Property</button>
+            <b />
+        <button className="add-property-submit" type="submit">Submit Your Property</button>
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
         </form>
     </section>
