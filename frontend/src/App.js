@@ -30,7 +30,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/properties">
+          <Route path="/properties"  exact>
             <PropertiesContainer />
           </Route>
           <Route path="/properties/new">

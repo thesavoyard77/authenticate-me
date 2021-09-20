@@ -13,7 +13,7 @@ const AddPropertyForm = () => {
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState("$0.00")
+    const [price, setPrice] = useState(0.00)
 
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);

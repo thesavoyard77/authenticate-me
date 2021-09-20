@@ -1,5 +1,4 @@
 // import hooks from 'react'. Which hook is meant for causing side effects?
-// import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fr"
 // import hooks from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useEffect, useState } from "react";
@@ -19,19 +18,15 @@ const PropertyPage = () => {
     // id is property id from url
     const { id } = useParams()
     const property = useSelector((state) => Object.values(state.properties))
-    // const oneProperty = useSelector((state) => Object.values(state.property))
     const dispatch = useDispatch();
     const userId = useSelector((state)=> state.session.user?.id)
-    // const[current, setCurrent] = useState(0)
     const [ startDate, setStartDate ] = useState(Date.now)
     const [ endDate, setEndDate ] = useState(Date.now)
     const history = useHistory();
     const propertyId = id;
     const propertyObj = property[0];
     const cost = parseInt(propertyObj?.price || 0);
-    // const images = propertyObj?.Images;
-    // const length = images?.length;
-    // console.log(images)
+    console.log('=============>', property[0]?.Images[0]?.imageUrl)
 
  const updateStart = (e) => setStartDate(e.target.value)
  const updateEnd = (e) => setEndDate(e.target.value)
@@ -74,6 +69,7 @@ if (!property[0]) return null;
 return (
  <div className="property-outer-wrapper">
     <div className="property-second-layer">
+
         <div className="property-card">
                  <img src={cabin} alt="placeholder" id="cabin-photo"/>
              <div className="property-container">
