@@ -86,7 +86,7 @@ return (
             onChange={updatePrice}
             />
         <button type="submit" className="edit-property-submit">Submit Your Property</button>
-        {/* <button type="button" onClick={deleteButton}>Remove Property</button> */}
+        <button type="button" onClick={deleteButton}>Remove Property</button>
         </form>
     </section>
 </div>

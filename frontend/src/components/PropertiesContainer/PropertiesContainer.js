@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 //import thunk creator
 import { getProperties } from '../../store/properties';
 import  "./PropertiesContainer.css";
-import cabin from './PropertyImg/cabin.jpg';
 import { NavLink } from 'react-router-dom';
 const PropertiesContainer = () => {
 //declare variables from hooks
@@ -25,7 +24,7 @@ return (
         <div  key={property.id} className="row">
             <div className="column">
                 <div className="property-card">
-                    <NavLink to={`/properties/${property.id}`}><img src={cabin} id='cabin' alt="placeholder" /></NavLink>
+                    <NavLink to={`/properties/${property.id}`}><img src={property.Images[0]?.imageUrl} id='cabin' alt="outside of property" /></NavLink>
                     <div className="property-container">
                         <h2><b>{property.name}</b></h2>
                         <p><b>Price Per Night</b><br /><b>$</b>{property.price}</p>

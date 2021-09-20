@@ -7,20 +7,24 @@ const asyncHandler = require('express-async-handler');
 const propertiesValidations = require('../../utils/validation')
 const { check, validationResult } = require('express-validator');
 //take a second to import the database stuff you'll need
-const { Property } = require('../../db/models');
+const { Property, Image } = require('../../db/models');
 //here's where you'll also import other middleware
 const { RequireAuth } = require('../../utils/auth')
 
 //create the api route here
 router.get('/', asyncHandler (async(req, res) => {
- const properties = await Property.findAll();
+ const properties = await Property.findAll({
+     include: Image,
+ });
 //  console.log(properties)
     return res.json(properties)
 }));
 
 router.get('/:id', asyncHandler (async(req, res) => {
     const propertyId = parseInt(req.params.id, 10);
-    const property = await Property.findByPk(propertyId);
+    const property = await Property.findByPk(propertyId, {
+        include: Image,
+    });
 
     return res.json(property);
 }));

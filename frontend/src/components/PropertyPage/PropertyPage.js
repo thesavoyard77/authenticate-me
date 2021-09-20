@@ -26,6 +26,7 @@ const PropertyPage = () => {
     const propertyId = id;
     const propertyObj = property[0];
     const cost = parseInt(propertyObj?.price || 0);
+    console.log('=============>', property[0]?.Images[0]?.imageUrl)
 
  const updateStart = (e) => setStartDate(e.target.value)
  const updateEnd = (e) => setEndDate(e.target.value)
@@ -40,25 +41,27 @@ const PropertyPage = () => {
     const lengthOfStay =( end - begin) / 86400000;
 
     const totalPrice = cost * lengthOfStay;
- const handleSubmit = async (e) => {
-    e.preventDefault()
-     const payload = {
-         userId,
-         propertyId,
-         startDate,
-         endDate,
-         totalPrice,
-     }
 
-     const reservation = await dispatch(createReservation(payload));
-     if (reservation){
-          history.push(`/users/${userId}/reservations`)
 
-      };
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const payload = {
+            userId,
+            propertyId,
+            startDate,
+            endDate,
+            totalPrice,
+        }
+
+    const reservation = await dispatch(createReservation(payload));
+    if (reservation){
+        history.push(`/users/${userId}/reservations`)
+
+    };
  }
 
- const toEditPage = () => {
-    history.push(`/properties/${id}/edit`)
+    const toEditPage = () => {
+       history.push(`/properties/${id}/edit`)
  }
 
 
