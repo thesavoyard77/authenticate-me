@@ -20,8 +20,28 @@
     color: #031322 !important;
     font-style: italic;
 }
+.navlinks-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+
+}
 
 .profile-dropdown {
     list-style-type: none;
 
+}
+
+.nav {
+    text-decoration: none;
+    color: #edeff1 !important;
+    font-style: italic;
+}
+
+.nav:active {
+    color: lightseagreen;
 }

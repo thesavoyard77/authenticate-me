@@ -78,19 +78,16 @@ router.get(
 );
 
 
-// //Get all of a user's properties
-// router.get(
-//   '/:id/properties',
-//   asyncHandler(async(req, res) => {
-//     const usersStuff = await User.findOne({
-//       where: { id:req.params.id},
-//       include: {
-//         model: Property
-//     }
-//     })
-//     return res.json(usersStuff)
+//Log in demo user
+// router.post('/demoUser', asyncHandler(async(req, res) => {
+//   const demoUser = await User.findByPk(1);
+
+//   await User.login(req, res, demoUser)
+
+//   return res.json({
+//     demoUser,
 //   })
-// );
+// }));
 
 
 module.exports = router;

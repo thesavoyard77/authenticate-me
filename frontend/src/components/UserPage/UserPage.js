@@ -51,7 +51,6 @@ return (
                         <div id="button">{<button type="button" onClick={()=> ModifyRes(reservation.id)}>Details</button>}</div>
                     </div>
                     <div>
-
                     </div>
                 </div>
             </div>

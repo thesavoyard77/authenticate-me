@@ -11,6 +11,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
+
   if (sessionUser) return (
     <Redirect to="/" />
   );
@@ -25,7 +26,17 @@ function LoginFormPage() {
       });
   }
 
+  const handleDemoSubmit = (e) => {
+    setCredential("Demo-lition")
+    setPassword("password")
+    return dispatch(sessionActions.login({
+      credential: "Demo-lition",
+      password: "password"
+    }))
+  }
+
   return (
+  <div>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -50,6 +61,8 @@ function LoginFormPage() {
       </label>
       <button type="submit">Log In</button>
     </form>
+    <button type="submit" onClick={handleDemoSubmit}>Demo Log In</button>
+  </div>
   );
 }
 
