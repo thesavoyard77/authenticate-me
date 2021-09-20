@@ -35,11 +35,8 @@ const AddPropertyForm = () => {
 
 
     const property = await dispatch(createProperty(payload));
-    if (property){
-         history.push(`/properties/${property.id}`)
 
-     };
-
+   history.push(`/properties/${property.id}`)
 };
 
 

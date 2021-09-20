@@ -40,22 +40,14 @@ router.post(
 );
 
 router.put(
-    '/:id',
+    '/:id/edit',
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
-        const id = await Property.findByPk(req.params.id)
-        await id.update(
-
-            {where: {
-                id: id,
-                name: req.params.name,
-                address: req.params.address,
-                userId: req.params.userId,
-                description: req.params.description,
-                price: req.params.price,
-            }}
-        )
-        res.json(id);
+        const id = parseInt(req.params.id)
+        // console.log(id)
+        const product = await Property.findByPk(id)
+        const putProduct = await product.update(req.body)
+        return res.json(putProduct);
     }),
 );
 

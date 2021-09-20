@@ -74,11 +74,19 @@ export const createProperty = (data) => async (dispatch) => {
 };
 
 // Update an existing property
-export const changeProperty = (data) => async (dispatch) => {
-    const response = await csrfFetch(`/api/properties/${data.id}`, {
-        method:'put',
+export const changeProperty = (payload, id) => async (dispatch) => {
+    // console.log(data)
+    const { name, address, userId, description, price } = payload
+    const response = await csrfFetch(`/api/properties/${id}/edit`, {
+        method:'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+            name,
+            address,
+            userId,
+            description,
+            price,
+        }),
     });
     if(response.ok) {
         const property = await response.json();
@@ -125,7 +133,7 @@ const propertiesReducer = (state = initialState, action) => {
         case CHANGE_PROPERTY: {
                 const newState = {
                 ...state,
-                [action.properties.id]: action.properties
+                [action.property.id]: action.property
              };
                 return newState;
             }
