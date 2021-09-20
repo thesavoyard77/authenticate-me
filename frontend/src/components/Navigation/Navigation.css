@@ -1,12 +1,18 @@
 .button-wrapper {
     display: flex;
     justify-content: space-between;
+    background-color: rgb(65, 62, 62);
 }
 
 #toggle-menu li {
     float: right;
     list-style-type: none;
   }
+
+  #logo-button {
+    background-color: rgb(65, 62, 62);
+  }
+
 
 .navlinks {
     display: flex;
@@ -33,6 +39,7 @@
 
 .profile-dropdown {
     list-style-type: none;
+    color: white;
 
 }
 
@@ -40,6 +47,7 @@
     text-decoration: none;
     color: #edeff1 !important;
     font-style: italic;
+    margin-top: 30px;
 }
 
 .nav:active {
