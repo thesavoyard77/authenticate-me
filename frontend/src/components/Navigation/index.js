@@ -25,7 +25,7 @@ function Navigation({ isLoaded }){
         <img src={logo} alt="book me logo" />
         <NavLink style={{ textDecoration: 'none' }} className="nav" to="/login">Log In</NavLink>
         <NavLink style={{ textDecoration: 'none' }} className="nav" to="/signup">Sign Up</NavLink>
-        <NavLink style={{ textDecoration: 'none' }} className="nav" to="/properties">Our Properties</NavLink>
+        {/* <NavLink style={{ textDecoration: 'none' }} className="nav" to="/properties">Our Properties</NavLink> */}
       </div>
     );
   }
