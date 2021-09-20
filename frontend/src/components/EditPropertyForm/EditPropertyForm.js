@@ -36,7 +36,7 @@ const EditPropertyForm = () => {
         price,
     };
 
-   const property = await dispatch(changeProperty(payload));
+   const property = await dispatch(changeProperty(payload, id));
    if (property){
         history.push(`/properties/${id}`)
     };

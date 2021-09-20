@@ -74,10 +74,10 @@ export const createProperty = (data) => async (dispatch) => {
 };
 
 // Update an existing property
-export const changeProperty = (data) => async (dispatch) => {
+export const changeProperty = (payload, id) => async (dispatch) => {
     // console.log(data)
-    const { name, address, userId, description, price } = data
-    const response = await csrfFetch(`/api/properties/${data.id}/edit`, {
+    const { name, address, userId, description, price } = payload
+    const response = await csrfFetch(`/api/properties/${id}/edit`, {
         method:'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
