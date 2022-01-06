@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 // Define action types as constants
-const SET_PROPERTIES = 'properties/setProperties';
+const GET_PROPERTIES = 'properties/setProperties';
 const CREATE_PROPERTY = 'properties/createProperties';
 const GET_ONE = 'properties/oneProperty';
 const CHANGE_PROPERTY = 'properties/changeProperty';
@@ -9,15 +9,15 @@ const DELETE_PROPERTY = 'properties/deleteProperty';
 // define action creators
 
 //get all properties
-const setProperties = (properties) => ({
-    type: SET_PROPERTIES,
+const getProperties = (properties) => ({
+    type: GET_PROPERTIES,
     properties,
 });
 
 //get one property by id
-const getOneProperty = (properties) => ({
+const getOneProperty = (property) => ({
     type: GET_ONE,
-    properties,
+    property,
 });
 
 //Create a new property
@@ -41,18 +41,18 @@ const deleteOneProperty = (property) => ({
 //define thunks
 
 //get all properties
-export const getProperties = () => async (dispatch) => {
+export const getAllProperties = () => async (dispatch) => {
   const res = await fetch('/api/properties')
   const properties = await res.json();
-  dispatch(setProperties(properties))
+  dispatch(getProperties(properties))
 };
 
 //get one property by id
 export const getProperty = (id) => async (dispatch) => {
     const response = await fetch(`/api/properties/${id}`)
-
     if (response.ok) {
         const property = await response.json();
+        // console.log(property)
         dispatch(getOneProperty(property));
     };
 };
@@ -111,15 +111,13 @@ const initialState = {};
 //define a reducer
 const propertiesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PROPERTIES:
-            const newState = {}
-            action.properties.forEach(property => newState[property.id] = property);
+        case GET_PROPERTIES:
+            // console.log(action.properties)
+            const newState = {...state, ...action.properties}
+            // action.properties.forEach(property => newState[property.id] = property);
             return newState;
         case GET_ONE: {
-            const newState = {
-                ...state,
-                [action.properties.id]: action.properties
-            };
+            const newState = {...state, ...action.property};
                 return newState;
             };
 

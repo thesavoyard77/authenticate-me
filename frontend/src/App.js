@@ -5,7 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import PropertiesContainer from "./components/PropertiesContainer";
+import AllProperties from "./components/AllPtoperties/index";
 import PropertyPage from "./components/PropertyPage/PropertyPage";
 import AddPropertyForm from './components/AddPropertyFormPage/AddPropertyForm'
 import EditPropertyForm from "./components/EditPropertyForm/EditPropertyForm";
@@ -31,7 +31,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/properties"  exact>
-            <PropertiesContainer />
+            <AllProperties />
           </Route>
           <Route path="/properties/new">
             <AddPropertyForm />
@@ -49,7 +49,7 @@ function App() {
             <ReservationPage />
           </Route>
           <Route exact path="/">
-            <PropertiesContainer />
+            <AllProperties />
           </Route>
         </Switch>
       )}

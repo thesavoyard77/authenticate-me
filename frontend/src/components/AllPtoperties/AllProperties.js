@@ -3,18 +3,22 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import thunk creator
-import { getProperties } from '../../store/properties';
+import { getAllProperties } from '../../store/properties';
 import  "./PropertiesContainer.css";
 import { NavLink } from 'react-router-dom';
-const PropertiesContainer = () => {
+
+const AllProperties = () => {
 //declare variables from hooks
 const dispatch = useDispatch();
 const properties = useSelector((state) => state.properties);
 const propertiesArray = Object.values(properties);
+// console.log({properties}, '<-------------properties deconstructed')
+// console.log(propertiesArray, '<-------------propertiesArray')
 
 // use a 'react' hook and cause a side effect
 useEffect(()=> {
-    dispatch(getProperties());
+    dispatch(getAllProperties());
+    return
 }, [dispatch]);
 
 
@@ -41,4 +45,4 @@ return (
 
 };
 
-export default PropertiesContainer;
+export default AllProperties;

@@ -27,18 +27,19 @@ const PropertyPage = () => {
     const [ endDate, setEndDate ] = useState(Date.now)
     const history = useHistory();
     const propertyId = id;
+    console.log(property)
     const propertyObj = property[0];
     const cost = parseInt(propertyObj?.price || 0);
-    // const images = propertyObj?.Images;
-    // const length = images?.length;
-    // console.log(images)
+    const firstImage = propertyObj?.Images[0]?.imageUrl;
 
- const updateStart = (e) => setStartDate(e.target.value)
- const updateEnd = (e) => setEndDate(e.target.value)
-    // use a 'react' hook and cause a side effect
-    useEffect(() => {
+    const updateStart = (e) => setStartDate(e.target.value)
+    const updateEnd = (e) => setEndDate(e.target.value)
+        // use a 'react' hook and cause a side effect
+        useEffect(() => {
         dispatch(getProperty(id));
-    },[dispatch, id])
+        return
+        },[dispatch, id])
+        // console.log(property)
 
     const begin = new Date(startDate)
     const end = new Date(endDate)
@@ -75,9 +76,9 @@ return (
  <div className="property-outer-wrapper">
     <div className="property-second-layer">
         <div className="property-card">
-                 <img src={cabin} alt="placeholder" id="cabin-photo"/>
+                 <img src={firstImage} alt="placeholder" id="cabin-photo"/>
              <div className="property-container">
-                 <h2><b>{property[0].name}</b></h2>
+                 <h2><b>{propertyObj?.name}</b></h2>
                  <p><b>Address: </b>{property[0].address}</p>
                  <p><b>Description: </b>{property[0].description}</p>
                  <p><b>Price Per Night: </b>{property[0].price}</p>
