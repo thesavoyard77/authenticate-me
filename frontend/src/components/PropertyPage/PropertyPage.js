@@ -13,104 +13,39 @@ import { getProperty } from "../../store/properties";
 import { createReservation } from "../../store/reservations";
 
 
+
 const PropertyPage = () => {
-    //declare variables from hooks
-
-    // id is property id from url
     const { id } = useParams()
-    const property = useSelector((state) => Object.values(state.properties))
-    // const oneProperty = useSelector((state) => Object.values(state.property))
+    const propertyName = useSelector((state) => state.properties?.name)
+    const propertyAddress = useSelector((state) => state.properties?.address)
     const dispatch = useDispatch();
-    const userId = useSelector((state)=> state.session.user?.id)
-    // const[current, setCurrent] = useState(0)
-    const [ startDate, setStartDate ] = useState(Date.now)
-    const [ endDate, setEndDate ] = useState(Date.now)
-    const history = useHistory();
-    const propertyId = id;
-    console.log(property)
-    const propertyObj = property[0];
-    const cost = parseInt(propertyObj?.price || 0);
-    const firstImage = propertyObj?.Images[0]?.imageUrl;
+    // const propertyStructure = useSelector((state) => state.properties)
+    const images = useSelector((state)=> state.properties?.Images)
+    // console.log(images)
 
-    const updateStart = (e) => setStartDate(e.target.value)
-    const updateEnd = (e) => setEndDate(e.target.value)
-        // use a 'react' hook and cause a side effect
-        useEffect(() => {
+    useEffect(() => {
         dispatch(getProperty(id));
         return
         },[dispatch, id])
-        // console.log(property)
+        // console.log(propertyName)
+        const imageUrls = []
 
-    const begin = new Date(startDate)
-    const end = new Date(endDate)
-
-    const lengthOfStay =( end - begin) / 86400000;
-
-    const totalPrice = cost * lengthOfStay;
-
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const payload = {
-            userId,
-            propertyId,
-            startDate,
-            endDate,
-            totalPrice,
+        const imageMap = () => {
+            images?.map(image => {
+                imageUrls.push(image?.imageUrl)
+                console.log(imageUrls)
+            })
         }
+        imageMap()
 
-    const reservation = await dispatch(createReservation(payload));
-    if (reservation){
-        history.push(`/users/${userId}/reservations`)
-
-    };
- }
-
-    const toEditPage = () => {
-       history.push(`/properties/${id}/edit`)
- }
-
-
-if (!property[0]) return null;
-return (
- <div className="property-outer-wrapper">
-    <div className="property-second-layer">
-        <div className="property-card">
-                 <img src={firstImage} alt="placeholder" id="cabin-photo"/>
-             <div className="property-container">
-                 <h2><b>{propertyObj?.name}</b></h2>
-                 <p><b>Address: </b>{property[0].address}</p>
-                 <p><b>Description: </b>{property[0].description}</p>
-                 <p><b>Price Per Night: </b>{property[0].price}</p>
-             </div>
-                <div className="calendars">
-                <form onSubmit={handleSubmit} >
-                    <div>
-                <p><b>Start Date:</b></p>
-                    <input
-                        type="date"
-                        required
-                        value={startDate}
-                        min={startDate}
-                        onChange={updateStart}
-                        />
-                        <p><b>End Date:</b></p>
-                    <input
-                        type="date"
-                        required
-                        value={endDate}
-                        min={startDate}
-                        onChange={updateEnd}
-                        />
-                        </div>
-                        <button type="submit">Submit Reservation</button>
-                        <button type="submit" onClick={toEditPage}>Edit Property</button>
-                </form>
-            </div>
+        if (!propertyName) return null;
+    return (
+        <>
+        <div>
+            <p>{imageUrls[0]}</p>
         </div>
-    </div>
-</div>
-)
+        </>
+    )
 }
 
 export default PropertyPage;
