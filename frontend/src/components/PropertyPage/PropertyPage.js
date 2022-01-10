@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 // import { NavLink } from "react-router-dom";
-import cabin from './PropertyImg/cabin.jpg'
 import "./PropertyPage.css"
 //import thunk creator
 import { getProperty } from "../../store/properties";
 import { createReservation } from "../../store/reservations";
+import { Carousel } from 'react-carousel-minimal';
 
 
 
@@ -18,10 +18,44 @@ const PropertyPage = () => {
     const { id } = useParams()
     const propertyName = useSelector((state) => state.properties?.name)
     const propertyAddress = useSelector((state) => state.properties?.address)
+    const propertyDescription = useSelector((state) => state.properties?.description)
+    const propertyPrice = useSelector((state) => state.properties?.price)
     const dispatch = useDispatch();
-    // const propertyStructure = useSelector((state) => state.properties)
     const images = useSelector((state)=> state.properties?.Images)
-    // console.log(images)
+    const userId = useSelector((state)=> state.session.user?.id)
+    const history = useHistory();
+    const propertyId = id;
+    const [ startDate, setStartDate ] = useState(Date.now)
+    const [ endDate, setEndDate ] = useState(Date.now)
+    const updateStart = (e) => setStartDate(e.target.value)
+    const updateEnd = (e) => setEndDate(e.target.value)
+    const cost = parseInt(propertyPrice || 0);
+
+    const begin = new Date(startDate)
+    const end = new Date(endDate)
+
+    const lengthOfStay =( end - begin) / 86400000;
+
+    const totalPrice = cost * lengthOfStay;
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const payload = {
+            userId,
+            propertyId,
+            startDate,
+            endDate,
+            totalPrice,
+        }
+
+    const reservation = await dispatch(createReservation(payload));
+    if (reservation){
+        history.push(`/users/${userId}/reservations`)
+
+    };
+ }
+
+
 
     useEffect(() => {
         dispatch(getProperty(id));
@@ -30,21 +64,107 @@ const PropertyPage = () => {
         // console.log(propertyName)
         const imageUrls = []
 
+
         const imageMap = () => {
             images?.map(image => {
-                imageUrls.push(image?.imageUrl)
-                console.log(imageUrls)
+                imageUrls.push({image: `${image?.imageUrl}`})
+                // console.log(imageUrls)
+                return null;
             })
         }
-        imageMap()
+ imageMap()
 
-        if (!propertyName) return null;
+ console.log(imageUrls)
+
+
+
+    const toEditPage = () => {
+        history.push(`/properties/${id}/edit`)
+    }
+
+
+    const captionStyle = {
+        fontSize: '2em',
+        fontWeight: 'bold',
+      }
+      const slideNumberStyle = {
+        fontSize: '20px',
+        fontWeight: 'bold',
+      }
+
+
+     if (!propertyName) return null;
     return (
-        <>
-        <div>
-            <p>{imageUrls[0]}</p>
+        <div className="property-outer-wrapper">
+        <div className="property-second-layer">
+            <div className="property-card">
+            <div className="App">
+      <div style={{ textAlign: "center" }}>
+
+        <div style={{
+          padding: "0 20px"
+        }}>
+          <Carousel
+            data={imageUrls}
+            time={2000}
+            width="50rem"
+            height="30rem"
+            captionStyle={captionStyle}
+            radius="10px"
+            slideNumber={true}
+            slideNumberStyle={slideNumberStyle}
+            captionPosition="top"
+            automatic={false}
+            dots={true}
+            pauseIconColor="white"
+            pauseIconSize="40px"
+            slideBackgroundColor="darkgrey"
+            slideImageFit="cover"
+            thumbnails={true}
+            thumbnailWidth="100px"
+            style={{
+              textAlign: "center",
+              maxWidth: "850px",
+              maxHeight: "500px",
+              margin: "40px auto",
+            }}
+          />
         </div>
-        </>
+      </div>
+    </div>
+                 <div className="property-container">
+                     <h2><b>{propertyName}</b></h2>
+                     <p><b>Address: </b>{propertyAddress}</p>
+                     <p><b>Description: </b>{propertyDescription}</p>
+                     <p><b>Price Per Night: </b>{propertyPrice}</p>
+                 </div>
+                    <div className="calendars">
+                    <form onSubmit={handleSubmit} >
+                        <div>
+                    <p><b>Start Date:</b></p>
+                        <input
+                            type="date"
+                            required
+                            value={startDate}
+                            min={startDate}
+                            onChange={updateStart}
+                            />
+                            <p><b>End Date:</b></p>
+                        <input
+                            type="date"
+                            required
+                            value={endDate}
+                            min={startDate}
+                            onChange={updateEnd}
+                            />
+                            </div>
+                            <button type="submit">Submit Reservation</button>
+                            <button type="submit" onClick={toEditPage}>Edit Property</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     )
 }
 
