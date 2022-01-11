@@ -25,7 +25,7 @@ router.get('/:id', asyncHandler (async(req, res) => {
     const property = await Property.findByPk(propertyId, {
         include: Image,
     });
-
+        // console.log(property)
     return res.json(property);
 }));
 

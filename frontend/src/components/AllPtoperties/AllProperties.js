@@ -3,18 +3,24 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import thunk creator
-import { getProperties } from '../../store/properties';
+import { getAllProperties } from '../../store/properties';
 import  "./PropertiesContainer.css";
 import { NavLink } from 'react-router-dom';
-const PropertiesContainer = () => {
+import cabin from './PropertyImg/cabin.jpg';
+
+
+const AllProperties = () => {
 //declare variables from hooks
 const dispatch = useDispatch();
 const properties = useSelector((state) => state.properties);
 const propertiesArray = Object.values(properties);
+// console.log({properties}, '<-------------properties deconstructed')
+console.log(propertiesArray, '<-------------propertiesArray')
 
 // use a 'react' hook and cause a side effect
-useEffect(()=> {
-    dispatch(getProperties());
+useEffect(() => {
+    dispatch(getAllProperties());
+    return
 }, [dispatch]);
 
 
@@ -24,7 +30,7 @@ return (
         <div  key={property.id} className="row">
             <div className="column">
                 <div className="property-card">
-                    <NavLink to={`/properties/${property.id}`}><img src={property.Images[0]?.imageUrl} id='cabin' alt="outside of property" /></NavLink>
+                    <NavLink to={`/properties/${property?.id}`}><img src={property?.Images[0]?.imageUrl} id='cabin' alt="outside of property" /></NavLink>
                     <div className="property-container">
                         <h2><b>{property.name}</b></h2>
                         <p><b>Price Per Night</b><br /><b>$</b>{property.price}</p>
@@ -41,4 +47,4 @@ return (
 
 };
 
-export default PropertiesContainer;
+export default AllProperties;
