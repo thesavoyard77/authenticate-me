@@ -16,15 +16,16 @@ import { Carousel } from 'react-carousel-minimal';
 
 const PropertyPage = () => {
     const { id } = useParams()
+    const propertyId = id;
     const propertyName = useSelector((state) => state.properties?.name)
     const propertyAddress = useSelector((state) => state.properties?.address)
     const propertyDescription = useSelector((state) => state.properties?.description)
     const propertyPrice = useSelector((state) => state.properties?.price)
+    const propertyOwner = useSelector((state) => state.properties?.userId)
     const dispatch = useDispatch();
     const images = useSelector((state)=> state.properties?.Images)
     const userId = useSelector((state)=> state.session.user?.id)
     const history = useHistory();
-    const propertyId = id;
     const [ startDate, setStartDate ] = useState(Date.now)
     const [ endDate, setEndDate ] = useState(Date.now)
     const updateStart = (e) => setStartDate(e.target.value)
@@ -62,6 +63,8 @@ const PropertyPage = () => {
         return
         },[dispatch, id])
         // console.log(propertyName)
+
+
         const imageUrls = []
 
 
@@ -74,7 +77,7 @@ const PropertyPage = () => {
         }
  imageMap()
 
- console.log(imageUrls)
+//  console.log(imageUrls)
 
 
 
@@ -159,7 +162,7 @@ const PropertyPage = () => {
                             />
                             </div>
                             <button type="submit">Submit Reservation</button>
-                            <button type="submit" onClick={toEditPage}>Edit Property</button>
+                            {propertyOwner === userId && <button type="submit" onClick={toEditPage}>Edit Property</button>}
                     </form>
                 </div>
             </div>
