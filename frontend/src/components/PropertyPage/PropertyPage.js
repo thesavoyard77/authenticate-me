@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 // import { NavLink } from "react-router-dom";
 import "./PropertyPage.css"
 //import thunk creator
-import { getProperty } from "../../store/properties";
+import { getProperty } from "../../store/property";
 import { createReservation } from "../../store/reservations";
 import { Carousel } from 'react-carousel-minimal';
 
@@ -17,13 +17,13 @@ import { Carousel } from 'react-carousel-minimal';
 const PropertyPage = () => {
     const { id } = useParams()
     const propertyId = id;
-    const propertyName = useSelector((state) => state.properties?.name)
-    const propertyAddress = useSelector((state) => state.properties?.address)
-    const propertyDescription = useSelector((state) => state.properties?.description)
-    const propertyPrice = useSelector((state) => state.properties?.price)
-    const propertyOwner = useSelector((state) => state.properties?.userId)
+    const propertyName = useSelector((state) => state.property?.name)
+    const propertyAddress = useSelector((state) => state.property?.address)
+    const propertyDescription = useSelector((state) => state.property?.description)
+    const propertyPrice = useSelector((state) => state.property?.price)
+    const propertyOwner = useSelector((state) => state.property?.userId)
     const dispatch = useDispatch();
-    const images = useSelector((state)=> state.properties?.Images)
+    const images = useSelector((state)=> state.property?.Images)
     const userId = useSelector((state)=> state.session.user?.id)
     const history = useHistory();
     const [ startDate, setStartDate ] = useState(Date.now)

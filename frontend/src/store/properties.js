@@ -3,7 +3,6 @@ import { csrfFetch } from './csrf';
 // Define action types as constants
 const GET_PROPERTIES = 'properties/setProperties';
 const CREATE_PROPERTY = 'properties/createProperties';
-const GET_ONE = 'properties/oneProperty';
 const CHANGE_PROPERTY = 'properties/changeProperty';
 const DELETE_PROPERTY = 'properties/deleteProperty';
 // define action creators
@@ -14,11 +13,6 @@ const getProperties = (properties) => ({
     properties,
 });
 
-//get one property by id
-const getOneProperty = (property) => ({
-    type: GET_ONE,
-    property,
-});
 
 //Create a new property
 const createOneProperty = (properties) => ({
@@ -47,15 +41,7 @@ export const getAllProperties = () => async (dispatch) => {
   dispatch(getProperties(properties))
 };
 
-//get one property by id
-export const getProperty = (id) => async (dispatch) => {
-    const response = await fetch(`/api/properties/${id}`)
-    if (response.ok) {
-        const property = await response.json();
-        // console.log(property)
-        dispatch(getOneProperty(property));
-    };
-};
+
 
 //Create a new property
 export const createProperty = (data) => async (dispatch) => {
@@ -116,10 +102,6 @@ const propertiesReducer = (state = initialState, action) => {
             const newState = {...state, ...action.properties}
             // action.properties.forEach(property => newState[property.id] = property);
             return newState;
-        case GET_ONE: {
-            const newState = {...state, ...action.property};
-                return newState;
-            };
 
         case CREATE_PROPERTY: {
             const newState = {

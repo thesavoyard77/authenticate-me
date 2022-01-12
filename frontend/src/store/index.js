@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session';
 import propertiesReducer from './properties';
+import propertyReducer from "./property";
 import reservationsReducer from "./reservations";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   properties: propertiesReducer,
+  property: propertyReducer,
   reservation: reservationsReducer,
 });
 
