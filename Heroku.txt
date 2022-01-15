@@ -7,3 +7,5 @@ heroku run npm run sequelize db:seed:undo:all
 heroku run npm run sequelize db:drop
 
 git push heroku main:master
+
+
