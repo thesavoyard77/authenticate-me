@@ -5,7 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import AllProperties from "./components/AllPtoperties/index";
+import AllProperties from "./components/AllProperties/index";
 import PropertyPage from "./components/PropertyPage/PropertyPage";
 import AddPropertyForm from './components/AddPropertyFormPage/AddPropertyForm'
 import EditPropertyForm from "./components/EditPropertyForm/EditPropertyForm";
