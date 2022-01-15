@@ -26,7 +26,7 @@ const PropertyPage = () => {
     const propertyId = id;
     const propertyObj = property[0];
     const cost = parseInt(propertyObj?.price || 0);
-    console.log('=============>', property[0]?.Images[0]?.imageUrl)
+    // console.log('=============>', property[0]?.Images[0]?.imageUrl)
 
  const updateStart = (e) => setStartDate(e.target.value)
  const updateEnd = (e) => setEndDate(e.target.value)

@@ -12,14 +12,13 @@ import "./PropertyPage.css"
 import { getProperty } from "../../store/properties";
 import { createReservation } from "../../store/reservations";
 
-
 const PropertyPage = () => {
     //declare variables from hooks
 
     // id is property id from url
     const { id } = useParams()
     const property = useSelector((state) => Object.values(state.properties))
-    console.log(property)
+    // console.log(property)
     // const oneProperty = useSelector((state) => Object.values(state.property))
     const dispatch = useDispatch();
     const userId = useSelector((state)=> state.session.user?.id)
@@ -28,7 +27,7 @@ const PropertyPage = () => {
     const [ endDate, setEndDate ] = useState(Date.now)
     const history = useHistory();
     const propertyId = id;
-    console.log(property)
+    // console.log(property)
     const propertyObj = property[0];
     const cost = parseInt(propertyObj?.price || 0);
     const firstImage = propertyObj?.Images[0]?.imageUrl;
