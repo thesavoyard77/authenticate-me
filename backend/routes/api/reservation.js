@@ -6,7 +6,7 @@ const asyncHandler = require('express-async-handler');
 const ReservationsValidations = require('../../utils/validation')
 const { check, validationResult } = require('express-validator');
 //take a second to import the database stuff you'll need
-const { Reservation, Property } = require('../../db/models');
+const { Reservation, Property, Image } = require('../../db/models');
 //here's where you'll also import other middleware
 const { RequireAuth } = require('../../utils/auth')
 
@@ -23,9 +23,23 @@ router.get('/', asyncHandler (async(req, res) => {
 //find one reservation by id
 router.get('/:id', asyncHandler (async(req, res) => {
     const reservationId = parseInt(req.params.id, 10);
-    const reservation = await Reservation.findByPk(req.params.id, {
-        include: Property
+    const reservation = await Reservation.findByPk(reservationId, {
+        include: [
+            {
+                model: Property,
+                include: [{
+                    model: Image,
+                }],
+            }
+        ]
     });
+    // const propertyId = reservation.propertyId
+    // const images = await Image.findAll({
+    //     where: {
+    //         propertyId: propertyId
+    //     }
+    // })
+    // console.log(images, '<---------------------')
 
     return res.json(reservation)
 }));

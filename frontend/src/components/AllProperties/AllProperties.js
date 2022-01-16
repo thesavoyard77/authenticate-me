@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllProperties } from '../../store/properties';
 import  "./PropertiesContainer.css";
 import { NavLink } from 'react-router-dom';
-import cabin from './PropertyImg/cabin.jpg';
+// import cabin from './PropertyImg/cabin.jpg';
 
 
 const AllProperties = () => {

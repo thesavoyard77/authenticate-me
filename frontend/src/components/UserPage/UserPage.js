@@ -8,7 +8,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 //import thunk creator
 import  "./UserPage.css";
-import cabin from './PropertyImg/cabin.jpg';
+// import cabin from './PropertyImg/cabin.jpg';
 
 const UsersPage = () => {
 //declare variables from hooks
@@ -20,7 +20,7 @@ const user = useSelector((state) => (state?.session[id]))
 const userId = useSelector((state)=> state.session.user?.id)
 const history = useHistory();
 // use a 'react' hook and cause a side effect
-
+// console.log(user?.Reservations)
 
 useEffect(()=> {
     dispatch(getUser(id))
@@ -43,12 +43,12 @@ return (
         <div  key={reservation.id} className="row">
             <div className="column">
                 <div className="reservation-card">
-                    <img src={cabin} id='cabin' alt="placeholder" />
+                    {/* <img src={cabin} id='cabin' alt="placeholder" /> */}
                     <div className="reservation-container">
-                        <h2><b>Reservation Number: {reservation.id}</b></h2>
-                        <p><b>Total Price</b><br /><b>$</b>{reservation.totalPrice}</p>
-                        <p><b>Dates of Stay</b><br /><b></b>{reservation.startDate} to {reservation.endDate}</p>
-                        <div id="button">{<button type="button" onClick={()=> ModifyRes(reservation.id)}>Details</button>}</div>
+                        <h2><b>Reservation Number: {reservation?.id}</b></h2>
+                        <p><b>Total Price</b><br /><b>$</b>{reservation?.totalPrice}</p>
+                        <p><b>Dates of Stay</b><br /><b></b>{reservation?.startDate} to {reservation?.endDate}</p>
+                        <div id="button">{<button type="button" onClick={()=> ModifyRes(reservation?.id)}>Details</button>}</div>
                     </div>
                     <div>
                     </div>
