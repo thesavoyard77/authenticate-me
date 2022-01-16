@@ -15,7 +15,7 @@ const dispatch = useDispatch();
 const properties = useSelector((state) => state.properties);
 const propertiesArray = Object.values(properties);
 // console.log({properties}, '<-------------properties deconstructed')
-console.log(propertiesArray, '<-------------propertiesArray')
+// console.log(propertiesArray, '<-------------propertiesArray')
 
 // use a 'react' hook and cause a side effect
 useEffect(() => {
