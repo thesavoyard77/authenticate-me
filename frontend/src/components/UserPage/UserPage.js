@@ -36,24 +36,22 @@ const ModifyRes = (id) => {
 
 
 return (
-<div className={'reservation-wrapper'}>
+<div className='reservation-wrapper'>
     {reservations?.map((reservation) =>  (
-        <div  key={reservation.id} className="row">
-            <div className="column">
-                <div className="reservation-card">
-                    {/* <img src={cabin} id='cabin' alt="placeholder" /> */}
-                    <div className="reservation-container">
-                        <img src={reservation?.Property?.Images[0]?.imageUrl}></img>
-                        <h2><b>Cabin: {reservation?.Property?.name}</b></h2>
-                        <p><b>Total Price</b><br /><b>$</b>{reservation?.totalPrice}</p>
-                        <p><b>Dates of Stay</b><br /><b></b>{reservation?.startDate} to {reservation?.endDate}</p>
-                        <div id="button">{<button type="button" onClick={()=> ModifyRes(reservation?.id)}>Details</button>}</div>
-                    </div>
-                    <div>
+                <div className="cards" key={reservation.id}>
+                    <div className="card">
+                        <img src={reservation?.Property?.Images[0]?.imageUrl} className='card-image' alt='cabin outside'></img>
+                            <div className='card-content'>
+                                <h2><b>{reservation?.Property?.name}</b></h2>
+                                <p><b>Total Price</b><br /><b>$</b>{reservation?.totalPrice}</p>
+                                <p><b>Dates of Stay</b><br /><b></b>{reservation?.startDate} to {reservation?.endDate}</p>
+                            </div>
+                        <div id="button" className='card-button'>
+                            {<button type="button" onClick={()=> ModifyRes(reservation?.id)}>Reservation Details</button>}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
     ))}
 
 </div>

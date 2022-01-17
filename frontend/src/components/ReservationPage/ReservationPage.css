@@ -1,23 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-break: strict;
+}
+
+
+.reservation-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: whitesmoke;
+}
+
 .reservation-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-left: 50px;
-      /* Add shadows to create the "card" effect */
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      transition: 0.3s;
-    }
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    width: 75%;
+    /* height: 25%; does nothing */
+    margin-bottom: 15px;
+    background: rgb(235, 246, 246);
+    border-radius: 15px;
+  }
 
-    /* On mouse-over, add a deeper shadow */
-    .reservation-card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
+  /* On mouse-over, add a deeper shadow */
+  .property-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+  }
 
-    /* Add some padding inside the card container */
-    .reservation-container {
-      padding: 2px 16px;
-    }
+  /* Add some padding inside the card container */
+  .reservation-container {
+    padding: 2px 16px;
+    border-radius: 15px;
+  }
 
-    #cabin-pic {
-      border-radius: 25px;
-    }
+  #cabin {
+    width: 100%;
+    border-radius: 15px;
+  }
+
+
