@@ -36,10 +36,10 @@ const ModifyRes = (id) => {
 
 
 return (
-<div className='reservation-wrapper'>
+<div className="cards" >
     {reservations?.map((reservation) =>  (
-                <div className="cards" key={reservation.id}>
-                    <div className="card">
+                
+                    <div className="card" key={reservation.id}>
                         <img src={reservation?.Property?.Images[0]?.imageUrl} className='card-image' alt='cabin outside'></img>
                             <div className='card-content'>
                                 <h2><b>{reservation?.Property?.name}</b></h2>
@@ -50,7 +50,7 @@ return (
                             {<button type="button" onClick={()=> ModifyRes(reservation?.id)}>Reservation Details</button>}
                         </div>
                     </div>
-                </div>
+              
 
     ))}
 

@@ -1,18 +1,17 @@
-.reservation-wrapper {
-  grid-template-columns: repeat(3, 1fr);
-}
+
 
 .cards {
   margin: 0 auto;
   max-width: 1000px;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   font-family: sans-serif;
 }
 
 .card {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 100%;
 }
 
 .card-image {
@@ -25,14 +24,17 @@
   font-size: 0.9em;
   padding: 15px;
   background: #fafafa;
+  text-align: center;
 }
 
 .card-content > h2 {
   margin-top: 0;
+  text-align: center;
 }
 
 .card-content > p:last-of-type {
   margin-bottom: 0;
+
 }
 
 .card-button {
@@ -45,7 +47,12 @@
   border-bottom: 2px solid #cccccc;
 }
 
-.card-button> button {
+.card-button> button:hover {
   border-radius: 5px;
-  
+  background-color: #64968c;
+  color: white;
+}
+
+.card-button> button {
+  color: black;
 }
