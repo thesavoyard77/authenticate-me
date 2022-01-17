@@ -13,12 +13,12 @@ import  "./UserPage.css";
 const UsersPage = () => {
 //declare variables from hooks
 const dispatch = useDispatch();
-const reservations = useSelector((state) => Object.values(state?.reservation))
+const reservations = useSelector((state) => Object.values(state?.reservations))
 // const userId = useSelector((state)=> state.session.user?.id)
 const userId = useSelector((state)=> state.session.user?.id)
 const history = useHistory();
 // use a 'react' hook and cause a side effect
-console.log(reservations)
+// console.log(reservations)
 
 useEffect(()=> {
     dispatch(getUsersReservations(userId))

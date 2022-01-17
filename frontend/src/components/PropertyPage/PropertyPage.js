@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 import "./PropertyPage.css"
 //import thunk creator
 import { getProperty } from "../../store/property";
-import { createReservation } from "../../store/reservations";
+import { createReservation } from "../../store/reservation";
 import { Carousel } from 'react-carousel-minimal';
 
 

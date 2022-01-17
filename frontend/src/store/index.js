@@ -4,13 +4,15 @@ import sessionReducer from './session';
 import propertiesReducer from './properties';
 import propertyReducer from "./property";
 import reservationsReducer from "./reservations";
+import reservationReducer from "./reservation";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   properties: propertiesReducer,
   property: propertyReducer,
-  reservation: reservationsReducer,
+  reservations: reservationsReducer,
+  reservation: reservationReducer,
 });
 
 let enhancer;

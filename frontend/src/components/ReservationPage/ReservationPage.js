@@ -7,12 +7,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { Redirect } from 'react-router';
-import { getProperty } from "../../store/property";
+
 // import { NavLink } from "react-router-dom";
 
 //import thunk creator
-import { deleteReservation, getReservation } from '../../store/reservations';
-import { Carousel } from 'react-carousel-minimal';
+import { getReservation, deleteReservation } from '../../store/reservation';
+// import { Carousel } from 'react-carousel-minimal';
 
 
 const ReservationPage = () => {
