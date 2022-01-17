@@ -6,16 +6,28 @@ const asyncHandler = require('express-async-handler');
 const ReservationsValidations = require('../../utils/validation')
 const { check, validationResult } = require('express-validator');
 //take a second to import the database stuff you'll need
-const { Reservation, Property, Image } = require('../../db/models');
+const { Reservation, Property, Image, User } = require('../../db/models');
 //here's where you'll also import other middleware
 const { RequireAuth } = require('../../utils/auth')
+
 
 
 //create the api route here
 
 //find all reservations
-router.get('/', asyncHandler (async(req, res) => {
-    const reservations = await Reservation.findAll();
+router.get('/user/:id', asyncHandler (async(req, res) => {
+    const sessionUser = parseInt(req.params.id, 10)
+    // console.log(sessionUser, '<=========================8')
+    const reservations = await Reservation.findAll({
+        where: { 
+            userId: sessionUser, 
+        }, include: [{ model: Property,
+            include: [{
+                model: Image,
+            }],
+         }]
+        
+    }) 
 
     return res.json(reservations);
 }));
@@ -33,31 +45,10 @@ router.get('/:id', asyncHandler (async(req, res) => {
             }
         ]
     });
-    // const propertyId = reservation.propertyId
-    // const images = await Image.findAll({
-    //     where: {
-    //         propertyId: propertyId
-    //     }
-    // })
-    // console.log(images, '<---------------------')
 
     return res.json(reservation)
 }));
 
-
-//reservation with property
-
-// router.get(
-//     '/:id',
-//     asyncHandler(async(req, res) => {
-//       const reservation = await Reservation.findByPk(req.params.id, {
-//         include: Property
-//       });
-//       return res.json(reservation)
-//     })
-//   );
-
-//create a new reservation
 
 router.post(
     '/',
