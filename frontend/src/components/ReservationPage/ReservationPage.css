@@ -1,43 +1,58 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-break: strict;
-}
 
-
-.reservation-wrapper{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: whitesmoke;
-}
 
 .reservation-card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
-    transition: 0.3s;
-    width: 75%;
-    /* height: 25%; does nothing */
-    margin-bottom: 15px;
-    background: rgb(235, 246, 246);
-    border-radius: 15px;
-  }
+  margin: 0 auto;
+  max-width: 1000px;
+  display: grid;
+  width: 40%;
+  gap: 20px;
+  font-family: sans-serif;
+}
 
-  /* On mouse-over, add a deeper shadow */
-  .property-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
-  }
+.card {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
 
-  /* Add some padding inside the card container */
-  .reservation-container {
-    padding: 2px 16px;
-    border-radius: 15px;
-  }
+.card-image {
+  width: 100%;
+  display: block;
+}
 
-  #cabin {
-    width: 100%;
-    border-radius: 15px;
-  }
+.card-content {
+  line-height: 1.5;
+  font-size: 0.9em;
+  padding: 15px;
+  background: #fafafa;
+  text-align: center;
+}
 
+.card-content > h2 {
+  margin-top: 0;
+  text-align: center;
+}
 
+.card-content > p:last-of-type {
+  margin-bottom: 0;
+
+}
+
+.card-button {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  background: #eeeeee;
+  font-size: 0.8em;
+  border-bottom: 2px solid #cccccc;
+}
+
+.card-button> button:hover {
+  border-radius: 5px;
+  background-color: #64968c;
+  color: white;
+}
+
+.card-button> button {
+  color: black;
+}

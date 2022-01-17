@@ -26,6 +26,7 @@ const ReservationPage = () => {
     const property = reservation[0]?.Property;
     // const propertyId = property?.id
     const images = reservation[0]?.Property?.Images
+  
    
 
 
@@ -58,65 +59,24 @@ imageMap()
      history.push(`/users/${userId}/reservations`)
  }
 
- const captionStyle = {
-    fontSize: '2em',
-    fontWeight: 'bold',
-  }
-  const slideNumberStyle = {
-    fontSize: '20px',
-    fontWeight: 'bold',
-  }
 
 
  if (!userId) {
     return <Redirect to="/properties" />
 };
 return (
- <div className="reservation-outer-wrapper">
-    <div className="reservation-second-layer">
+ <div className="reservation-card">
+    <div className="card">
+    <img src={imageUrls[0]} className='card-image' alt='cabin outside'></img>
+        <div className='card-content'>  
 
-        <div className="reservation-card">
-        {/* <div className="App">
-      <div style={{ textAlign: "center" }}>
-
-        <div style={{
-          padding: "0 20px"
-        }}>
-          <Carousel
-            data={imageUrls}
-            time={2000}
-            width="50rem"
-            height="30rem"
-            captionStyle={captionStyle}
-            radius="10px"
-            slideNumber={true}
-            slideNumberStyle={slideNumberStyle}
-            captionPosition="top"
-            automatic={false}
-            dots={true}
-            pauseIconColor="white"
-            pauseIconSize="40px"
-            slideBackgroundColor="darkgrey"
-            slideImageFit="cover"
-            thumbnails={true}
-            thumbnailWidth="100px"
-            style={{
-              textAlign: "center",
-              maxWidth: "850px",
-              maxHeight: "500px",
-              margin: "40px auto",
-            }}
-          />
-        </div>
-      </div>
-    </div> */}
-             <div className="reservation-container">
                 <h2><b>{property?.name}</b></h2>
                 <p>{property?.address}</p>
                 <p><b>Start Date: </b>{reservation[0]?.startDate} <b>To: </b>{reservation[0]?.endDate}</p>
                 <p><b>Total Price of Stay: $</b>{reservation[0]?.totalPrice}</p>
-                <button onClick={handleDelete}>Cancel Reservation</button>
-             </div>
+           <div id="button" className='card-button'>
+                  <button onClick={handleDelete}>Cancel Reservation</button>
+          </div>
         </div>
     </div>
 </div>
