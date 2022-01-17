@@ -44,7 +44,7 @@ const ReservationPage = () => {
 
     const imageMap = () => {
         images?.map(image => {
-            imageUrls.push({image: `${image?.imageUrl}`})
+            imageUrls.push(image?.imageUrl)
             // console.log(imageUrls)
             return null;
         })
@@ -76,7 +76,7 @@ return (
     <div className="reservation-second-layer">
 
         <div className="reservation-card">
-        <div className="App">
+        {/* <div className="App">
       <div style={{ textAlign: "center" }}>
 
         <div style={{
@@ -109,7 +109,7 @@ return (
           />
         </div>
       </div>
-    </div>
+    </div> */}
              <div className="reservation-container">
                 <h2><b>{property?.name}</b></h2>
                 <p>{property?.address}</p>

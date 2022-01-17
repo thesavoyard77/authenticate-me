@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 //Define actions types as constants
 
 //Get reservations
-const SET_RESERVATIONS = 'reservations/setReservations';
+const GET_RESERVATIONS = 'reservations/setReservations';
 //Get one reservation
 const GET_RESERVATION = 'reservations/getReservation'
 //Post a new reservation
@@ -13,9 +13,9 @@ const DELETE_RESERVATION = 'reservations/deleteReservation'
 
 // define action creators
 //Get reservations
-const setReservations = (reservations) => {
+const getReservations = (reservations) => {
 return {
-    type: SET_RESERVATIONS,
+    type: GET_RESERVATIONS,
     reservations
  }
 };
@@ -41,11 +41,11 @@ const deleteOneReservation = (reservations) => ({
 
 //define thunks
 //Get reservations
-export const getReservations = () => async (dispatch) => {
-    const res = await csrfFetch('/api/reservations')
+export const getUsersReservations = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reservations/user/${userId}`)
     const reservations = await res.json();
 
-    dispatch(setReservations(reservations))
+    dispatch(getReservations(reservations))
 };
 
 //Get one reservation
@@ -89,9 +89,8 @@ const initialState = {};
 const reservationsReducer = (state = initialState, action) => {
     let newState;
  switch (action.type) {
-     case SET_RESERVATIONS:
-        newState = {}
-        action.reservations.forEach(reservation => newState[reservation.id] = reservation)
+     case GET_RESERVATIONS:
+        newState = {...state, ...action.reservations}
         return newState;
      case GET_RESERVATION: {
              newState = {
