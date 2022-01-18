@@ -15,9 +15,9 @@ const getProperties = (properties) => ({
 
 
 //Create a new property
-const createOneProperty = (properties) => ({
+const createOneProperty = (property) => ({
     type: CREATE_PROPERTY,
-    properties,
+    payload: property,
 });
 
 //Update an existing property
@@ -43,21 +43,51 @@ export const getAllProperties = () => async (dispatch) => {
 
 
 
-//Create a new property
-export const createProperty = (data) => async (dispatch) => {
-    // console.log(data)
-    const response = await csrfFetch(`/api/properties`, {
-        method:'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
-    });
+// //Create a new property
+// export const createProperty = (data) => async (dispatch) => {
+//     // console.log(data)
+//     const response = await csrfFetch(`/api/properties`, {
+//         method:'post',
+//         headers: {'Content-Type': 'application/json'},
+//         body: JSON.stringify(data),
+//     });
 
-    if(response.ok) {
-        const property = await response.json();
-        dispatch(createOneProperty(property));
-        return property
-    };
-};
+//     if(response.ok) {
+//         const property = await response.json();
+//         dispatch(createOneProperty(property));
+//         return property
+//     };
+// };
+
+export const createProperty = (data) => async (dispatch) => {
+    const { images, image, name, address, description, price } = data;
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("address", address);
+    formData.append("description", description);
+    formData.append("price", price);
+  
+    // for multiple files
+    if (images && images.length !== 0) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append("images", images[i]);
+      }
+    }
+  
+    // for single file
+    if (image) formData.append("image", image);
+  
+    const res = await fetch(`/api/properties`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
+    });
+  
+    const data = await res.json();
+    dispatch(createOneProperty(data.property));
+  };
 
 // Update an existing property
 export const changeProperty = (payload, id) => async (dispatch) => {
@@ -104,11 +134,7 @@ const propertiesReducer = (state = initialState, action) => {
             return newState;
 
         case CREATE_PROPERTY: {
-            const newState = {
-                ...state,
-                [action.properties.id]: action.properties
-            };
-                return newState;
+            return {...state, property: action.payload }
             };
         case CHANGE_PROPERTY: {
                 const newState = {
