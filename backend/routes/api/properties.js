@@ -1,3 +1,9 @@
+const {
+    singleMulterUpload,
+    singlePublicFileUpload,
+    multipleMulterUpload,
+    multiplePublicFileUpload,
+  } = require("../../awsS3");
 //create a router here
 const express = require('express');
 const router = express.Router();
@@ -39,15 +45,37 @@ router.post(
 
 );
 
+
+router.post(
+    '/',
+    singleMulterUpload('image'),
+    propertiesValidations.validateCreate,
+    asyncHandler(async(req, res) => {
+        const imageUrl = await singlePublicFileUpload(req.file);
+        const property = await Property.create(req.body);
+        let propertyId = property.id
+        const image = await Image.create({
+            imageUrl,
+            propertyId
+        })
+        const data = {
+            image,
+            property
+        }
+        res.json(data)
+    })
+
+);
+
 router.put(
     '/:id/edit',
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
         const id = parseInt(req.params.id)
         // console.log(id)
-        const product = await Property.findByPk(id)
-        const putProduct = await product.update(req.body)
-        return res.json(putProduct);
+        const property = await Property.findByPk(id)
+        const putProperty = await property.update(req.body)
+        return res.json(putProperty);
     }),
 );
 
