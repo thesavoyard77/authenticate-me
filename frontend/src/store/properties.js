@@ -59,11 +59,12 @@ export const getAllProperties = () => async (dispatch) => {
 //     };
 // };
 
-export const createProperty = (data) => async (dispatch) => {
-    const { images, image, name, address, description, price } = data;
+export const createProperty = (payload) => async (dispatch) => {
+    const { images, image, name, address, userId, description, price } = payload;
     const formData = new FormData();
     formData.append("name", name);
     formData.append("address", address);
+    formData.append("userId", userId);
     formData.append("description", description);
     formData.append("price", price);
   
@@ -77,7 +78,7 @@ export const createProperty = (data) => async (dispatch) => {
     // for single file
     if (image) formData.append("image", image);
   
-    const res = await fetch(`/api/properties`, {
+    const res = await csrfFetch(`/api/properties`, {
       method: "POST",
       headers: {
         "Content-Type": "multipart/form-data",

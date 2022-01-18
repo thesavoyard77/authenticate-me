@@ -35,15 +35,15 @@ router.get('/:id', asyncHandler (async(req, res) => {
     return res.json(property);
 }));
 
-router.post(
-    '/',
-    propertiesValidations.validateCreate,
-    asyncHandler(async(req, res) => {
-        const property = await Property.create(req.body);
-        res.json(property)
-    })
+// router.post(
+//     '/',
+//     propertiesValidations.validateCreate,
+//     asyncHandler(async(req, res) => {
+//         const property = await Property.create(req.body);
+//         res.json(property)
+//     })
 
-);
+// );
 
 
 router.post(

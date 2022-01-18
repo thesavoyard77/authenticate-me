@@ -14,6 +14,9 @@ const AddPropertyForm = () => {
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0.00)
+    const [image, setImage] = useState(null);
+    const [errors, setErrors] = useState([]);
+    
 
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
@@ -24,25 +27,49 @@ const AddPropertyForm = () => {
         return <Redirect to="/properties" />
     };
 
- const handleSubmit = async (e) => {
-    const payload = {
-        name,
-        address,
-        userId,
-        description,
-        price,
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+        // console.log(file)
     };
 
+ const handleSubmit = async (e) => {
+     e.preventDefault();
+     let newErrors = [];
+     if (image === null) {
+         newErrors.push("At least one property image is required")
+     }
+  
 
-    const property = await dispatch(createProperty(payload));
 
-   history.push(`/properties/${property.id}`)
+     await dispatch(createProperty({ name, address, userId, description, price, image,}))
+    .then(() => {
+        setName("");
+        setAddress("");
+        setDescription("");
+        setPrice("");
+        setImage(null);
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          newErrors = data.errors;
+        //   console.log(newErrors)
+          setErrors(newErrors);
+        };
+    });
+
+//    history.push(`/properties/${property.id}`)
 };
+
+
 
 
 return (
 <div className="add-form-outer-wrapper">
     <section className="new-form-holder">
+    {errors.length > 0 &&
+        errors.map((error) => <div key={error}>{error}</div>)}
         <form onSubmit={handleSubmit} className="add-property-form">
             <label className="form-label">Name of Your Property</label>
             <input
@@ -75,6 +102,10 @@ return (
             value={price}
             onChange={updatePrice}
             />
+            <b />
+            <label>
+            <input type="file" onChange={updateFile} />
+            </label>
             <b />
         <button className="add-property-submit" type="submit">Submit Your Property</button>
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}

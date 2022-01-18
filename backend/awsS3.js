@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const bearbnbapp = "aws-s3-pern-demo";
+const NAME_OF_BUCKET = "bearbnbapp";
 
 const multer = require("multer");
 
