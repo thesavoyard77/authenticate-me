@@ -25,17 +25,16 @@ useEffect(() => {
 
 
 return (
-<div className={'property-wrapper'}>
+<div className='cards'>
     {propertiesArray.map((property) =>  (
-        <div  key={property.id} className="row">
-            <div className="column">
-                <div className="property-card">
-                    <NavLink to={`/properties/${property?.id}`}><img src={property?.Images[0]?.imageUrl} id='cabin' alt="outside of property" /></NavLink>
-                    <div className="property-container">
-                        <h2><b>{property.name}</b></h2>
-                        <p><b>Price Per Night</b><br /><b>$</b>{property.price}</p>
-                    </div>
-                </div>
+        <div  key={property.id} className="card">
+            <NavLink to={`/properties/${property?.id}`}><img src={property?.Images[0]?.imageUrl} className='card-image' alt='cabin outside' /></NavLink>
+            <div className="card-content">
+                <h2><b>{property.name}</b></h2>
+                <p><b>Price Per Night</b><br /><b>$</b>{property.price}</p>
+            </div>
+            <div className='card-navlink'>
+            <NavLink to={`/properties/${property?.id}`} className='nav-text'>Availability</NavLink>
             </div>
         </div>
     ))}

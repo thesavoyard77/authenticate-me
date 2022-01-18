@@ -67,7 +67,7 @@ imageMap()
 return (
  <div className="reservation-card">
     <div className="card">
-    <img src={imageUrls[0]} className='card-image' alt='cabin outside'></img>
+    <img src={imageUrls[0]} className='reservation-card-image' alt='cabin outside'></img>
         <div className='card-content'>  
 
                 <h2><b>{property?.name}</b></h2>

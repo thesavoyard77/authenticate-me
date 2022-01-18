@@ -14,10 +14,19 @@
   width: 100%;
 }
 
+
 .card-image {
   width: 100%;
   display: block;
+  height: 200px;
 }
+
+
+.reservation-card-image {
+  width: 100%;
+  display: block;
+}
+
 
 .card-content {
   line-height: 1.5;
@@ -54,5 +63,21 @@
 }
 
 .card-button> button {
+  color: black;
+}
+
+.card-navlink {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  background: #eeeeee;
+  font-size: 0.8em;
+  border-bottom: 2px solid #cccccc;
+  text-decoration: none;
+}
+
+.nav-text {
+  text-decoration: none;
   color: black;
 }
