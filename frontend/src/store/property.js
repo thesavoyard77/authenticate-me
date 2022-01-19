@@ -67,17 +67,28 @@ export const createProperty = (payload) => async (dispatch) => {
 // Update an existing property
 export const changeProperty = (payload, id) => async (dispatch) => {
     // console.log(data)
-    const { name, address, userId, description, price } = payload
+    const { images, image, name, address, userId, description, price } = payload
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("address", address);
+    formData.append("userId", userId);
+    formData.append("description", description);
+    formData.append("price", price);
+
+       // for multiple files
+       if (images && images.length !== 0) {
+        for (let i = 0; i < images.length; i++) {
+          formData.append("images", images[i]);
+        }
+      }
+    
+      // for single file
+      if (image) formData.append("image", image);
+
     const response = await csrfFetch(`/api/properties/${id}/edit`, {
         method:'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            name,
-            address,
-            userId,
-            description,
-            price,
-        }),
+        body: formData,
     });
     if(response.ok) {
         const property = await response.json();

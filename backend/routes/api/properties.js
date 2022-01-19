@@ -36,7 +36,6 @@ router.get('/:id', asyncHandler (async(req, res) => {
 }));
 
 
-
 router.post(
     '/',
     singleMulterUpload('image'),
@@ -60,15 +59,45 @@ router.post(
 
 router.put(
     '/:id/edit',
+    singleMulterUpload('image'),
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
-        const id = parseInt(req.params.id)
-        // console.log(id)
-        const property = await Property.findByPk(id)
+        const imageUrl = await singlePublicFileUpload(req.file);
+        const propertyId = parseInt(req.params.id)
+        const property = await Property.findByPk(propertyId)
         const putProperty = await property.update(req.body)
-        return res.json(putProperty);
+        const image = await Image.create({
+            imageUrl,
+            propertyId
+        })
+        const data = {
+            image,
+            putProperty
+        }
+        res.json(data)
     }),
 );
+
+
+// router.post(
+//     '/',
+//     multipleMulterUpload("images"),
+//     propertiesValidations.validateCreate,
+//     asyncHandler(async(req, res) => {
+//         const imagesUrl = await multiplePublicFileUpload(req.files);
+//         const property = await Property.create(req.body);
+//         let propertyId = property.id
+//         imagesUrl.forEach(async(image) =>{
+//             await image.create({
+//                 imagesUrl,
+//                 propertyId
+//             })
+//         }) 
+
+//         res.json(property)
+//     })
+// );
+
 
 router.delete(
     '/:id',

@@ -15,6 +15,7 @@ const AddPropertyForm = () => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0.00)
     const [image, setImage] = useState(null);
+    // const [images, setImages] = useState(null);
     const [errors, setErrors] = useState([]);
     
 
@@ -32,6 +33,12 @@ const AddPropertyForm = () => {
         if (file) setImage(file);
         // console.log(file)
     };
+
+    // //   for multiple file upload
+    // const updateFiles = (e) => {
+    //   const files = e.target.files;
+    //   setImages(files);
+    // };
 
  const handleSubmit = async (e) => {
      e.preventDefault();
@@ -106,6 +113,13 @@ return (
             <label>
             <input type="file" onChange={updateFile} />
             </label>
+                    {/* <label>
+            Multiple Upload
+            <input
+              type="file"
+              multiple
+              onChange={updateFiles} />
+          </label> */}
             <b />
         <button className="add-property-submit" type="submit">Submit Your Property</button>
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
