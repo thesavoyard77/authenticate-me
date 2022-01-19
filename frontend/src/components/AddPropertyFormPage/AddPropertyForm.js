@@ -1,6 +1,6 @@
 import './PropertyForm.css'
 import { useState } from 'react';
-import { createProperty } from '../../store/properties';
+import { createProperty } from '../../store/property';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
