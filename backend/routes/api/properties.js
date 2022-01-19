@@ -35,15 +35,6 @@ router.get('/:id', asyncHandler (async(req, res) => {
     return res.json(property);
 }));
 
-// router.post(
-//     '/',
-//     propertiesValidations.validateCreate,
-//     asyncHandler(async(req, res) => {
-//         const property = await Property.create(req.body);
-//         res.json(property)
-//     })
-
-// );
 
 
 router.post(
@@ -82,10 +73,18 @@ router.put(
 router.delete(
     '/:id',
     asyncHandler (async(req, res)=> {
-        const property = await Property.findByPk(req.params.id);
+        const propertyId = req.params.id
+        const allPropertyPhotos = await Image.findAll({
+            where: {
+                propertyId: propertyId
+            }
+        })
+        allPropertyPhotos.forEach(async(image)=> {
+            await image.destroy()
+        })
+        const property = await Property.findByPk(propertyId);
         if (!property) throw new Error('Cannot find that property')
-
-        await property.destroy({ where: {id: property.id }})
+        await property.destroy({ where: {id: propertyId }})
         return res.json({ message: 'success' });
     })
 )

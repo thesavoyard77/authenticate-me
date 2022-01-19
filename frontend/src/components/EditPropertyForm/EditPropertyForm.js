@@ -1,6 +1,7 @@
 import './EditPropertyForm.css'
 import { useState } from 'react';
-import { changeProperty, deleteProperty } from '../../store/property';
+import { changeProperty } from '../../store/property';
+import { deleteProperty } from '../../store/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';

@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 const GET_ONE = 'properties/oneProperty';
 const CREATE_PROPERTY = 'properties/createProperties';
 const CHANGE_PROPERTY = 'properties/changeProperty';
-const DELETE_PROPERTY = 'properties/deleteProperty';
+
 
 //get one property by id
 const getOneProperty = (property) => ({
@@ -22,11 +22,6 @@ const changeOneProperty = (property) => ({
     property,
 });
 
-//Delete a property by ID
-const deleteOneProperty = (property) => ({
-    type: DELETE_PROPERTY,
-    property,
-})
 
 //get one property by id
 export const getProperty = (id) => async (dispatch) => {
@@ -91,15 +86,6 @@ export const changeProperty = (payload, id) => async (dispatch) => {
     };
 };
 
-//delete a property
-export const deleteProperty = (data) => async (dispatch) => {
-        const response = await csrfFetch(`/api/properties/${data}`, {
-            method: 'delete',
-        })
-        if(response.ok) {
-            dispatch(deleteOneProperty(data));
-        };
-};
 
 
 const initialState = {};
@@ -119,12 +105,8 @@ const propertyReducer = (state = initialState, action) => {
                  };
                     return newState;
                 }
-                case DELETE_PROPERTY: {
-                    const newState = {...state};
-                    delete newState[action.property]
-                    return newState;
-                }
-        default:
+
+            default:
                 return state;
     }
 
