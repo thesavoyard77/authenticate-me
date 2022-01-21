@@ -37,7 +37,7 @@ function LoginFormPage() {
 
   return (
   <div>
-      <button type="submit" onClick={handleDemoSubmit}>Demo Log In</button>
+      <button type="submit" onClick={handleDemoSubmit} className='demo-login'>Demo Log In</button>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}

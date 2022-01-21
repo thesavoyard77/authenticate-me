@@ -3,3 +3,7 @@ input {
 }.label {
     color: white;
 }
+
+.demo-login {
+    cursor: pointer;
+}
