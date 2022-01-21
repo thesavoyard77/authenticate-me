@@ -7,6 +7,11 @@
     width: 30%;
 }
 
+textarea {
+    border-radius: 5px;
+    text-align: center;
+}
+
 .form-label {
     color: white;
     margin-top: 25px;
@@ -17,8 +22,14 @@
     align-items: center;
 }
 
-.edit-property-submit {
-    margin-top: 25px;
+.edit-property-submit, .remove-property {
+   width: 40%;
+   border-radius: 5px;
+}
+
+.remove-property {
+    background-color: #d11a2a;
+    color: white;
 }
 
 body, html {
@@ -36,4 +47,9 @@ body, html {
 form {
     display:table;
     margin:auto;
+}
+
+.description {
+    width: 80%;
+    height: 100px;
 }

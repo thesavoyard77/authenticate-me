@@ -36,14 +36,14 @@ function LoginFormPage() {
   }
 
   return (
-  <div>
-      <button type="submit" onClick={handleDemoSubmit} className='demo-login'>Demo Log In</button>
-    <form onSubmit={handleSubmit}>
+  <div className='login-form-wrapper'>
+
+    <form onSubmit={handleSubmit} className='login-form'>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label className="label">
-        Username or Email
+        Username or Email:
         <input
           type="text"
           value={credential}
@@ -61,6 +61,8 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit" className='login-submit'>Log In</button>
+     
+      <button type="submit" onClick={handleDemoSubmit} className='demo-login'>Demo Log In</button>
     </form>
 
   </div>

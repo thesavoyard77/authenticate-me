@@ -1,13 +1,25 @@
+.login-form-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 input {
-    margin-right: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    background-color: white;
 }.label {
     color: white;
 }
 
 .demo-login {
     cursor: pointer;
+    background-color: rgb(5, 3, 1);
+    color: white;
 }
 
 .login-submit {
     cursor: pointer;
+    background-color: white;
+    color: black;
 }
+

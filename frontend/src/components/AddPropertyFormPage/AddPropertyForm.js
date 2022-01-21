@@ -98,6 +98,7 @@ return (
             required
             value={description}
             onChange={updateDescription}
+            className='description'
             />
             <label className="form-label">Price Per Night</label>
             <input

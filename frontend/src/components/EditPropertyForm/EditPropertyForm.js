@@ -103,6 +103,7 @@ return (
             required
             value={description}
             onChange={updateDescription}
+            className='description'
             />
             <label className="form-label">Price Per Night</label>
             <input
@@ -115,7 +116,7 @@ return (
             <input type="file" onChange={updateFile} />
             </label>
         <button type="submit" className="edit-property-submit">Submit Your Property</button>
-        <button type="button" onClick={deleteButton}>Remove Property</button>
+        <button type="button" onClick={deleteButton} className="remove-property">Remove Property</button>
         </form>
     </section>
 </div>
