@@ -74,6 +74,7 @@ export const changeProperty = (payload, id) => async (dispatch) => {
     formData.append("userId", userId);
     formData.append("description", description);
     formData.append("price", price);
+    formData.append("image", image);
 
        // for multiple files
        if (images && images.length !== 0) {
@@ -82,19 +83,17 @@ export const changeProperty = (payload, id) => async (dispatch) => {
         }
       }
     
-      // for single file
-      if (image) formData.append("image", image);
 
     const response = await csrfFetch(`/api/properties/${id}/edit`, {
         method:'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'multipart/form-data'},
         body: formData,
     });
     if(response.ok) {
         const property = await response.json();
         dispatch(changeOneProperty(property));
         return property;
-    };
+    }
 };
 
 
@@ -120,7 +119,6 @@ const propertyReducer = (state = initialState, action) => {
             default:
                 return state;
     }
-
 }
 
 export default propertyReducer;

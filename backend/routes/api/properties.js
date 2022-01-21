@@ -62,6 +62,7 @@ router.put(
     singleMulterUpload('image'),
     propertiesValidations.validateUpdate,
     asyncHandler(async function(req, res) {
+        console.log("---------------------->", req.body.image, req.file, "<===========================")
         const imageUrl = await singlePublicFileUpload(req.file);
         const propertyId = parseInt(req.params.id)
         const property = await Property.findByPk(propertyId)

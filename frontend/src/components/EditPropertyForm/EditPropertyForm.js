@@ -27,12 +27,10 @@ const EditPropertyForm = () => {
     // const [errors, setErrors] = useState([]);
     id = parseInt(id);
 
-
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
-
 
     useEffect(() => {
         dispatch(getProperty(id));
@@ -44,15 +42,16 @@ const EditPropertyForm = () => {
     };
 
     const updateFile = (e) => {
-        const file = e.target.files[0];
-        if (file) setImage(file);
-        console.log(file)
+        const image = e.target.files[0];
+        if (image) setImage(image);
+     
     };
 
     // //   for multiple file upload
     // const updateFiles = (e) => {
     //   const files = e.target.files;
     //   setImages(files);
+
     // };
 
  const handleSubmit = async (e) => {
@@ -65,17 +64,17 @@ const EditPropertyForm = () => {
         price,
         image,
     };
-    console.log(payload)
+    // console.log(payload, "<=============================payload")
    const property = await dispatch(changeProperty(payload, id));
    if (property){
         history.push(`/properties/${id}`)
     };
 };
 
-const deleteButton = () => {
-    dispatch(deleteProperty(id))
-    history.push(`/properties`)
-};
+    const deleteButton = () => {
+        dispatch(deleteProperty(id))
+        history.push(`/properties`)
+    };
 
 return (
 <div className="edit-form-outer-wrapper">

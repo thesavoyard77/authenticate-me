@@ -62,19 +62,19 @@ const initialState = {};
 
 //define a reducer
 const propertiesReducer = (state = initialState, action) => {
+    var newState = {};
     switch (action.type) {
         case GET_PROPERTIES:
-            // console.log(action.properties)
-            const newState = {...state, ...action.properties}
-            // action.properties.forEach(property => newState[property.id] = property);
+            action.properties.forEach((property)=> {
+                newState[property.id] = property
+            })
             return newState;
-            case DELETE_PROPERTY: {
-                const newState = {...state};
-                delete newState[action.property]
-                return newState;
-            }
-            default:
-                return state;
+        case DELETE_PROPERTY: 
+            newState = {...state};
+            delete newState[action.property]
+            return newState;
+        default:
+            return state;
     }
 
 };
