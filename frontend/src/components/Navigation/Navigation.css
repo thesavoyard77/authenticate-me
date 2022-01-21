@@ -16,7 +16,7 @@
 
 .navlinks {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     text-decoration: none;
     padding: 20px;
     margin-left: -10px;
@@ -51,5 +51,6 @@
 }
 
 .nav:active {
-    color: lightseagreen;
+    border-bottom: 1px solid white;
+    background-color: rgb(65, 62, 62) !important;
 }

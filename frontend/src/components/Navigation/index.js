@@ -13,9 +13,9 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div className='navlinks'>
       <ProfileButton user={sessionUser} />
-      <NavLink style={{ textDecoration: 'none' }} className="nav" to="/properties">Our Properties</NavLink>
-      <NavLink style={{ textDecoration: 'none' }} className="nav" to="/properties/new">Add Your Property</NavLink>
-      <NavLink style={{ textDecoration: 'none' }} className="nav" to={`/users/${sessionUser.id}/reservations`}>See Your Reservations</NavLink>
+      <NavLink style={{ textDecoration: 'none', backgroundColor: 'rgb(65, 62, 62)' }} className="nav" to="/properties">Our Properties</NavLink>
+      <NavLink style={{ textDecoration: 'none', backgroundColor: 'rgb(65, 62, 62)' }} className="nav" to="/properties/new">Add Your Property</NavLink>
+      <NavLink style={{ textDecoration: 'none', backgroundColor: 'rgb(65, 62, 62)' }} className="nav" to={`/users/${sessionUser.id}/reservations`}>See Your Reservations</NavLink>
 
     </div>
     );
