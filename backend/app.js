@@ -11,9 +11,8 @@ const isProduction = environment === 'production';
 const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(express.json());
-
-
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
 if (!isProduction) {
     // enable cors only in development
@@ -25,7 +24,7 @@ if (!isProduction) {
   }));
 
   // Set the _csrf token and create req.csrfToken method
-  //Comment this out to use Postman to test backend routes
+  // Comment this out to use Postman to test backend routes
   app.use(
     csurf({
       cookie: {
