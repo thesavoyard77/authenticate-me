@@ -105,17 +105,14 @@ const propertyReducer = (state = initialState, action) => {
             const newState = {...state, ...action.property};
                 return newState;
             };
-            case CREATE_PROPERTY: {
+            case CREATE_PROPERTY: 
                 return {...state, property: action.payload }
-                };
-            case CHANGE_PROPERTY: {
+            case CHANGE_PROPERTY: 
                     const newState = {
                     ...state,
                     [action.property.id]: action.property
                  };
                     return newState;
-                }
-
             default:
                 return state;
     }

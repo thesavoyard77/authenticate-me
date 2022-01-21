@@ -2,13 +2,11 @@ import './PropertyForm.css'
 import { useState } from 'react';
 import { createProperty } from '../../store/property';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
 
 const AddPropertyForm = () => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const userId = useSelector((state)=> state.session.user?.id)
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
@@ -66,7 +64,6 @@ const AddPropertyForm = () => {
         };
     });
 
-//    history.push(`/properties/${property.id}`)
 };
 
 
