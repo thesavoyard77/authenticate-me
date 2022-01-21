@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersReservations } from '../../store/reservations';
-import { useParams } from 'react-router-dom';
 import { Redirect, useHistory } from 'react-router-dom';
 
 //import thunk creator
