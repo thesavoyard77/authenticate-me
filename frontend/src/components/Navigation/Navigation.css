@@ -28,7 +28,7 @@
 }
 .navlinks-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px;
     margin-left: -10px;
     margin-right: -10px;
@@ -48,9 +48,14 @@
     color: #edeff1 !important;
     font-style: italic;
     margin-top: 30px;
+
 }
 
 .nav:active {
     border-bottom: 1px solid white;
     background-color: rgb(65, 62, 62) !important;
+}
+
+.logo {
+    height: 65px;
 }

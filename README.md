@@ -1,4 +1,4 @@
-# book.me
+# bearbnb
 
 Clone the project from: https://github.com/thesavoyard77/authenticate-me
 
