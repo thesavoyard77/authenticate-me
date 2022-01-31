@@ -78,27 +78,6 @@ router.put(
     }),
 );
 
-
-// router.post(
-//     '/',
-//     multipleMulterUpload("images"),
-//     propertiesValidations.validateCreate,
-//     asyncHandler(async(req, res) => {
-//         const imagesUrl = await multiplePublicFileUpload(req.files);
-//         const property = await Property.create(req.body);
-//         let propertyId = property.id
-//         imagesUrl.forEach(async(image) =>{
-//             await image.create({
-//                 imagesUrl,
-//                 propertyId
-//             })
-//         }) 
-
-//         res.json(property)
-//     })
-// );
-
-
 router.delete(
     '/:id',
     asyncHandler (async(req, res)=> {

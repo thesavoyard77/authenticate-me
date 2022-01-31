@@ -1,43 +1,19 @@
 # bearbnb
+#### *By Christopher Felix*
 
-Clone the project from: https://github.com/thesavoyard77/authenticate-me
+___
 
-Create a `.env` file in the root directory of the backend directory.
-Use the `env.example`
+**Table of Contents**
+* Introduction
+* Frontend Overview 
+* Backend Overview
+* Conclusion
 
-CD into back and install dependancies by running:
+## bearbnb Introduction
 
-  `npm install`
+bearbnb is a full stack application that simulates a local, Big Bear, California property reservation site. Allowing owners to create properties and upload photos via  [Amazon S3 media sharing](https://aws.amazon.com/media-sharing/).
 
-  To initiate the database:
+Potential guest can brows properties and create reservations. While this site is fairly simple, it was my first solo project built in one week. bearbnb is a tongue in cheek application that pokes fun at the locals obsession with naming everything with a bear in it.
 
-  `npx dotenv sequelize db:create`
+## Frontend Overview
 
-Now migrate the database:
-
- `npx dotenv sequelize db:migrate`
-
- Now seed the database with the seed files:
-
- `npx dotenv sequelize db:seed:all`
-
- You may now run the backend server with:
-
- `npm start`
-
- You can query the backend server with Postman using `http://localhost:5000`
-
- Now CD into the frontend directory and install dependancies by running:
-
- `npm install`
-
- Initiate the frontend server by running:
-
- `npm start`
-
- Your default browser should open to the home page. If not, open a browser navigate to:
-
- `http://localhost:3000`
-
-
-You now have a local full stack website to play around with!
