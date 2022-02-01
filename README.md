@@ -31,7 +31,7 @@ client side in order to update the state seemlessly.
 for more information on [Redux](https://redux.js.org/).
 
 Dependancy management on the front end is handled with 
-[npmjs](https://www.npmjs.com/). Which is also used to run the front-end server in development.
+[npmjs](https://www.npmjs.com/). Which is also used to run the frontend and backend servers in development.
 
 ## Backend Overview
 
