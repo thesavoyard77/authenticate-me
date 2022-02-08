@@ -13,6 +13,7 @@
 }
 
 .add-form-outer-wrapper {
+    
     flex-direction: column;
     align-items: center;
 }

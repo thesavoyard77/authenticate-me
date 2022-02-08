@@ -23,9 +23,9 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div className='navlinks-wrapper'>
         <img src={logo} alt="book me logo" className='logo' />
-        <NavLink style={{ textDecoration: 'none' }} className="nav" to="/login">Log In</NavLink>
-        <NavLink style={{ textDecoration: 'none' }} className="nav" to="/signup">Sign Up</NavLink>
-        <NavLink style={{ textDecoration: 'none' }} className="nav" to="/properties">Our Properties</NavLink>
+        <NavLink style={{ textDecoration: 'none', backgroundColor: 'rgb(65, 62, 62)' }} className="nav" to="/login">Log In</NavLink>
+        <NavLink style={{ textDecoration: 'none', backgroundColor: 'rgb(65, 62, 62)' }} className="nav" to="/signup">Sign Up</NavLink>
+        <NavLink style={{ textDecoration: 'none', backgroundColor: 'rgb(65, 62, 62)' }} className="nav" to="/properties">Our Properties</NavLink>
       </div>
     );
   }
